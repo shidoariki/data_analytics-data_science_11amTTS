@@ -1,0 +1,14 @@
+# Software installtion list 
+1)  xampp server
+2)  mysqlworkbench8.0
+3)  download and install python
+4)  mongoDB compass
+5)  pycharm 
+6)  visual studio code IDE
+7)  jupyter notebook
+8)  excel 
+9)  PowerBI 
+10) numpy of python
+11) seaborn for python 
+12) pandas for python
+13) matplotlib for python
