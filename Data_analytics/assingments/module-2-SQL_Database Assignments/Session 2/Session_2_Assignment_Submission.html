@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 2: Basic SELECT & FROM - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background: #f8fafc; }
+    .screenshot-card {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .screenshot-caption {
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      color: #64748b;
+      font-style: italic;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+      background: #dcfce7;
+      color: #15803d;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>SESSION 2: Basic SELECT & FROM</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Date:</strong> September 28, 2026</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\Session 2</code></p>
+  </div>
+
+  <h2>1. Key Concepts</h2>
+  <ul>
+    <li><strong><code>SELECT</code>:</strong> Identifies which attributes/columns to retrieve from the database.</li>
+    <li><strong><code>FROM</code>:</strong> Identifies the table or relation containing the requested attributes.</li>
+    <li><strong>Selective Projection:</strong> Querying specific columns (<code>SELECT col1, col2</code>) improves performance and bandwidth compared to the wildcard (<code>SELECT *</code>).</li>
+    <li><strong>Column Aliasing:</strong> The <code>AS</code> keyword provides user-friendly column headers in outputs without modifying the physical table schema.</li>
+    <li><strong>SQL Comments:</strong> Single-line comments start with <code>-- </code> (ANSI standard) or <code>#</code> (MySQL). Multi-line comments use <code>/* ... */</code>.</li>
+  </ul>
+
+  <h2>2. Demo Execution: <code>SELECT * FROM employees;</code></h2>
+  <pre><code>SELECT * 
+FROM employees;</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>employee_id</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>department</th>
+        <th>salary</th>
+        <th>hire_date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Aarav</td><td>Sharma</td><td>Data Analytics</td><td>75000.00</td><td>2023-01-15</td></tr>
+      <tr><td>2</td><td>Priya</td><td>Patel</td><td>Engineering</td><td>85000.00</td><td>2022-06-10</td></tr>
+      <tr><td>3</td><td>Rohan</td><td>Verma</td><td>Marketing</td><td>62000.00</td><td>2023-03-01</td></tr>
+      <tr><td>4</td><td>Sneha</td><td>Reddy</td><td>Finance</td><td>90000.00</td><td>2021-11-20</td></tr>
+      <tr><td>5</td><td>Vikram</td><td>Malhotra</td><td>Human Resources</td><td>58000.00</td><td>2024-02-18</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Select All Columns from <code>restaurants</code> <span class="badge">EXECUTED</span></h3>
+  <pre><code>SELECT * 
+FROM restaurants;</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>restaurant_id</th>
+        <th>name</th>
+        <th>cuisine</th>
+        <th>city</th>
+        <th>rating</th>
+        <th>avg_cost_for_two</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Barbeque Nation</td><td>North Indian / BBQ</td><td>Mumbai</td><td>4.5</td><td>1600</td></tr>
+      <tr><td>2</td><td>Bawarchi</td><td>Biryani / Mughlai</td><td>Hyderabad</td><td>4.3</td><td>800</td></tr>
+      <tr><td>3</td><td>Peter Cat</td><td>Continental</td><td>Kolkata</td><td>4.6</td><td>1200</td></tr>
+      <tr><td>4</td><td>Karim's</td><td>Mughlai</td><td>Delhi</td><td>4.4</td><td>900</td></tr>
+      <tr><td>5</td><td>Toit</td><td>Italian / Brewpub</td><td>Bengaluru</td><td>4.7</td><td>1800</td></tr>
+    </tbody>
+  </table>
+
+  <div class="screenshot-card">
+    <img src="Task_1_Workbench_restaurants_all_columns.jpg" alt="Task 1 MySQL Workbench Screenshot">
+    <div class="screenshot-caption">Figure 2.1: MySQL Workbench displaying SELECT * FROM restaurants with Result Grid.</div>
+  </div>
+
+  <h3>Task 2: Select <code>name</code> and <code>rating</code> from <code>zomato_reviews</code> <span class="badge">EXECUTED</span></h3>
+  <pre><code>SELECT name, rating 
+FROM zomato_reviews;</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>The Belgian Waffle Co.</td><td>4.6</td></tr>
+      <tr><td>McDonald's</td><td>4.1</td></tr>
+      <tr><td>Haldiram's</td><td>4.3</td></tr>
+      <tr><td>Domino's Pizza</td><td>3.9</td></tr>
+      <tr><td>Starbucks Coffee</td><td>4.5</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: Renaming Columns with <code>AS</code> from <code>movies</code> <span class="badge">EXECUTED</span></h3>
+  <pre><code>SELECT 
+    movie_name AS 'Title', 
+    release_year AS 'Year Released' 
+FROM movies;</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Year Released</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Inception</td><td>2010</td></tr>
+      <tr><td>Interstellar</td><td>2014</td></tr>
+      <tr><td>The Dark Knight</td><td>2008</td></tr>
+      <tr><td>Oppenheimer</td><td>2023</td></tr>
+      <tr><td>Dune: Part Two</td><td>2024</td></tr>
+    </tbody>
+  </table>
+
+  <div class="screenshot-card">
+    <img src="Task_3_Workbench_movies_aliasing.jpg" alt="Task 3 MySQL Workbench Screenshot">
+    <div class="screenshot-caption">Figure 2.2: MySQL Workbench displaying aliased column headers 'Title' and 'Year Released'.</div>
+  </div>
+
+  <h3>Task 4: Querying <code>products</code> with Comments <span class="badge">EXECUTED</span></h3>
+  <pre><code>-- This query retrieves all columns and product records from the inventory table.
+SELECT * 
+FROM products;</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>product_id</th>
+        <th>product_name</th>
+        <th>category</th>
+        <th>price</th>
+        <th>stock_quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Logitech MX Master 3S</td><td>Electronics</td><td>8999.00</td><td>45</td></tr>
+      <tr><td>2</td><td>Dell UltraSharp 27" 4K</td><td>Monitors</td><td>45000.00</td><td>15</td></tr>
+      <tr><td>3</td><td>Keychron K2 Mechanical Keyboard</td><td>Accessories</td><td>7499.00</td><td>30</td></tr>
+      <tr><td>4</td><td>Sony WH-1000XM5 Headphones</td><td>Audio</td><td>26990.00</td><td>25</td></tr>
+      <tr><td>5</td><td>SanDisk 1TB Portable SSD</td><td>Storage</td><td>8499.00</td><td>60</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+</html>
