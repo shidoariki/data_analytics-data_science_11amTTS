@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 2: Data & Databases (Structured vs Unstructured) - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+      --orange: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; font-size: 1.8rem; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; font-size: 1.35rem; }
+    h3 { color: #334155; margin-top: 24px; font-size: 1.15rem; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background: #f8fafc; }
+    .screenshot-card {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .screenshot-caption {
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      color: #64748b;
+      font-style: italic;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+      background: #dcfce7;
+      color: #15803d;
+      margin-left: 8px;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    ol.classification-list {
+      padding-left: 20px;
+    }
+    ol.classification-list li {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>SESSION 2: Data &amp; Databases (Structured vs Unstructured)</h1>
+  
+  <div class="meta-box">
+    <p><strong>Module:</strong> Module 1 — Fundamentals of IT Industry &amp; Analytics</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Date:</strong> September 28, 2026</p>
+    <p><strong>Submission Folder:</strong> <code>D:\DA\Data_analytics\assingments\module-1-fundamental-ITIndustry Assignment\Session 2</code></p>
+  </div>
+
+  <h2>1. Core Concepts</h2>
+  <ul>
+    <li><strong>Structured Data:</strong> Strict tables and schemas (CSV, SQL tables, Excel).</li>
+    <li><strong>Semi-Structured Data:</strong> Self-describing schema markers (JSON, XML).</li>
+    <li><strong>Unstructured Data:</strong> Media, audio, free text, video streams.</li>
+    <li><strong>ETL vs. ELT:</strong> ETL transforms on a middle compute server before loading; ELT loads raw data into cloud data warehouses and transforms on demand.</li>
+    <li><strong>OLTP vs. OLAP:</strong> OLTP processes fast live operational transactions; OLAP handles heavy historical analytical aggregations.</li>
+  </ul>
+
+  <h2>2. Assignment Tasks &amp; Solutions</h2>
+
+  <h3>Task 1: CSV Comparison — Microsoft Excel vs. Notepad <span class="badge">COMPLETED</span></h3>
+  <ul>
+    <li><strong>Difference 1 (Visual Delimiters &amp; Structure):</strong> In Notepad, the CSV is presented as unformatted raw text where commas separate attributes and line wraps can make parsing difficult. In Excel, the comma delimiters are automatically converted into neat columns and rows with gridlines.</li>
+    <li><strong>Difference 2 (Data Type Inference &amp; Formatting):</strong> Notepad renders characters literally byte-for-byte (preserving leading zeros and verbatim dates). Excel infers data types, converts dates into localized display formats, strips leading zeros from numeric codes, and aligns text left and numbers right.</li>
+  </ul>
+
+  <div class="screenshot-card">
+    <img src="Task_1_Excel_vs_Notepad_Comparison.jpg" alt="Excel vs Notepad Comparison">
+    <div class="screenshot-caption">Figure 2.1: Split-screen comparison of IPL_Match_Scores_Sample.csv opened in Notepad (left) and Excel (right).</div>
+  </div>
+
+  <h3>Task 2: Python Script to Parse Trending Movies JSON <span class="badge">EXECUTED</span></h3>
+  <pre><code>import json
+with open('trending_movies.json', 'r') as f:
+    movies = json.load(f)
+for idx, movie in enumerate(movies, start=1):
+    print(f"{idx}. {movie['title']} ({movie['release_year']}) — Rating: {movie['rating']}/10")</code></pre>
+
+  <div class="card">
+    <h4>Console Output:</h4>
+    <pre><code> 1. Inception (2010) — Rating: 8.8/10
+ 2. Interstellar (2014) — Rating: 8.7/10
+ 3. The Dark Knight (2008) — Rating: 9.0/10
+ 4. Oppenheimer (2023) — Rating: 8.9/10
+ 5. Dune: Part Two (2024) — Rating: 8.6/10
+ 6. Spider-Man: Across the Spider-Verse (2023) — Rating: 8.7/10
+ 7. Top Gun: Maverick (2022) — Rating: 8.3/10
+ 8. Avengers: Endgame (2019) — Rating: 8.4/10
+ 9. Parasite (2019) — Rating: 8.5/10
+10. Gladiator II (2024) — Rating: 7.9/10</code></pre>
+  </div>
+
+  <h3>Task 3: MySQL Workbench Table Data Import Wizard <span class="badge">IMPORTED</span></h3>
+  <p>Imported Zomato restaurant data into table <code>zomato_db.zomato_restaurants</code> with proper column mappings (<code>restaurant_id</code>, <code>restaurant_name</code>, <code>city</code>, <code>cuisine</code>, <code>rating</code>, <code>cost_for_two</code>, <code>online_order</code>).</p>
+
+  <div class="screenshot-card">
+    <img src="Task_3_Workbench_Table_Import_Wizard.jpg" alt="MySQL Workbench Table Data Import Wizard">
+    <div class="screenshot-caption">Figure 2.2: MySQL Workbench Table Data Import Wizard mapping Zomato restaurant columns.</div>
+  </div>
+
+  <h3>Task 4: Difference Between ETL and ELT (Swiggy &amp; Spotify Examples)</h3>
+  <div class="card">
+    <h4>🚚 ETL Example — Swiggy (Food Orders):</h4>
+    <p>Live order transactions contain sensitive customer PII (phone numbers, delivery addresses). During <strong>ETL</strong>, data is extracted from the transactional database, transformed on a secure middle-tier server (masking addresses and converting vouchers), and only the sanitized data is loaded into the warehouse for privacy compliance.</p>
+  </div>
+  <div class="card">
+    <h4>🎵 ELT Example — Spotify (Music Streaming):</h4>
+    <p>Billions of raw streaming events (skips, plays, pauses) are extracted and immediately loaded into a scalable cloud warehouse (BigQuery/Snowflake) without prior transformation. Data scientists and analysts then run <strong>Transform</strong> jobs directly in the warehouse using SQL/dbt when generating recommendations and annual Spotify Wrapped summaries.</p>
+  </div>
+
+  <h3>Task 5: Classification of Scenarios (OLTP vs. OLAP)</h3>
+  <ol class="classification-list">
+    <li><strong>Booking a movie ticket on BookMyShow:</strong> <strong>OLTP</strong> — Fast, real-time transactional write requiring immediate seat-locking and strict ACID consistency to avoid double booking.</li>
+    <li><strong>Generating a monthly sales report for Flipkart sellers:</strong> <strong>OLAP</strong> — Complex analytical aggregation across millions of historical order records to evaluate revenue performance.</li>
+    <li><strong>Adding a new contact in WhatsApp:</strong> <strong>OLTP</strong> — Low-latency, single-record atomic insert into a user's localized transactional device database.</li>
+    <li><strong>Analyzing IPL team performance over 5 seasons:</strong> <strong>OLAP</strong> — Multi-dimensional analytical read query aggregating historical multi-year records to calculate winning percentages and longitudinal trends.</li>
+  </ol>
+
+</div>
+
+</body>
+</html>

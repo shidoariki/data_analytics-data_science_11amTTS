@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 - Session 4: Data Analytics Workflow</title>
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --secondary: #0D9488;
+            --dark: #0F172A;
+            --light-bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --accent: #F59E0B;
+            --danger: #EF4444;
+            --success: #10B981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            color: #FFFFFF;
+            padding: 35px 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .tag {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.3);
+            border: 1px solid #3B82F6;
+            color: #93C5FD;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #94A3B8;
+            font-size: 15px;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card h2 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .section-card h3 {
+            font-size: 16px;
+            color: var(--primary);
+            margin: 20px 0 10px 0;
+        }
+
+        .badge {
+            background: #EFF6FF;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid #DBEAFE;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #F1F5F9;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: #F8FAFC;
+        }
+
+        .quote-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-style: italic;
+            color: #166534;
+        }
+
+        .insight-box {
+            background: #FEF3C7;
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            color: #92400E;
+        }
+
+        pre {
+            background: #0F172A;
+            color: #F8FAFC;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #F1F5F9;
+            color: #0F172A;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #F8FAFC;
+            padding: 10px;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .img-caption {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="tag">Module 1 &bull; Session 4</span>
+        <h1>The End-to-End Data Analytics Workflow</h1>
+        <p>Comprehensive Documentation, Industry Pipeline Methodology & Deliverables</p>
+    </header>
+
+    <!-- Visual Infographic -->
+    <div class="section-card">
+        <h2><span class="badge">Framework</span> The 7-Stage Analytics Lifecycle</h2>
+        <div class="img-container">
+            <img src="Data_Analytics_Workflow_Visual.png" alt="7-Stage Data Analytics Workflow">
+            <div class="img-caption">Figure 1.0: The complete lifecycle from business requirements to executive insight presentation.</div>
+        </div>
+    </div>
+
+    <!-- Demo Case Study -->
+    <div class="section-card">
+        <h2><span class="badge">Demo</span> Original Case Study: Zomato Late-Night Order Optimization</h2>
+        <p>This case study illustrates how Zomato navigates the 7-stage workflow to resolve late-night cart abandonment and driver deficits.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Execution & Methodology</th>
+                    <th>Tools / Technologies</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. Requirement Gathering</strong></td>
+                    <td>Identified a spike in cart drop-offs from 18% to 41% between 11:00 PM and 4:00 AM. Formulated the business question: <em>"How can we recover Rs. 4.5M in lost weekly late-night GMV?"</em></td>
+                    <td>Jira, PRD, Stakeholder Alignment</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Data Collection</strong></td>
+                    <td>Queried 1.2M checkout session logs from AWS Athena, order tables from PostgreSQL, and rider location GPS streams via Kafka.</td>
+                    <td>Kafka, AWS Athena, SQL (PostgreSQL)</td>
+                </tr>
+                <tr>
+                    <td><strong>3. Data Cleaning</strong></td>
+                    <td>Handled missing ETA estimates, stripped invalid currency symbols, removed duplicate retry pings within a 2-second debounce window.</td>
+                    <td>Python (Pandas), SQL (Regex)</td>
+                </tr>
+                <tr>
+                    <td><strong>4. Data Transformation</strong></td>
+                    <td>Calculated rider-to-order availability ratios per postal PIN code and aggregated cart values into 15-minute intervals.</td>
+                    <td>SQL Window Functions, Python</td>
+                </tr>
+                <tr>
+                    <td><strong>5. Data Modeling</strong></td>
+                    <td>Trained a logistic regression model showing that surge delivery fees > Rs. 65 and ETAs > 48 minutes increased drop-off likelihood by 3.8x.</td>
+                    <td>Scikit-learn, Feature Store</td>
+                </tr>
+                <tr>
+                    <td><strong>6. Reporting</strong></td>
+                    <td>Constructed live operational heatmaps in Power BI monitoring unassigned orders and surge multipliers across urban clusters.</td>
+                    <td>Power BI, Tableau</td>
+                </tr>
+                <tr>
+                    <td><strong>7. Insights & Action</strong></td>
+                    <td><strong>Action:</strong> Introduced a Rs. 30 night-shift partner incentive and capped consumer surge fees at Rs. 40. Recovered 29% of abandoned carts within 3 weeks.</td>
+                    <td>Executive Deck, A/B Testing</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Task 1 -->
+    <div class="section-card">
+        <h2><span class="badge">Task 1</span> Real-World Analytics Problem & Business Question (Zomato)</h2>
+        <p>In high-density metro areas like Ahmedabad (Prahladnagar, Satellite, Bodakdev), dining trends dramatically diverge between weekday corporate orders and weekend late-night social gatherings. Cloud kitchens frequently face high food spoilage on weekdays and sudden stock-outs on weekends, while delivery fleets experience severe regional shortages.</p>
+        
+        <div class="quote-box">
+            <strong>Target Business Question:</strong><br>
+            "Which food categories and cuisine price points yield the highest order volume and customer retention in West Ahmedabad between Friday evening and Sunday midnight, and what is the optimal rider allocation required per 1 km radius to keep Average Delivery Time (ADT) under 28 minutes?"
+        </div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="section-card">
+        <h2><span class="badge">Task 2</span> Spotify Listening Trends: 5 Raw Data Types</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Raw Field</th>
+                    <th>Data Type</th>
+                    <th>Example</th>
+                    <th>Analytical Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><code>user_id</code> / Demographic</td>
+                    <td>UUID / String</td>
+                    <td><code>usr_98a71b2</code></td>
+                    <td>Tracks user cohorts, tier (Free vs. Premium), and geography.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><code>track_id</code> & Metadata</td>
+                    <td>String / JSON</td>
+                    <td><code>trk_Starboy_186bpm</code></td>
+                    <td>Identifies tempo, genre, language, and artist popularity.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><code>play_timestamp_utc</code></td>
+                    <td>Timestamp (ISO 8601)</td>
+                    <td><code>2026-09-28T14:30:00Z</code></td>
+                    <td>Reveals hourly listening habits (commute, gym, study, sleep).</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><code>duration_played_ms</code></td>
+                    <td>Integer</td>
+                    <td><code>194000</code> ms</td>
+                    <td>Separates quick skips (&lt; 30s) from full listens for algorithms.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><code>listening_context</code></td>
+                    <td>String / Enum</td>
+                    <td><code>"Today's Top Hits"</code></td>
+                    <td>Tracks discovery channel (radio, playlist, search, friend share).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="section-card">
+        <h2><span class="badge">Task 3</span> Data Cleaning & Field Standardization (Flipkart Sample)</h2>
+        <p><strong>Raw Messy Record:</strong> <code>product_id: 123, name: 'iPhone 14 ', price: '79999 ', category: ' Mobiles', rating: '4.5 ', stock: 'Yes'</code></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Raw Input</th>
+                    <th>Cleaned Output</th>
+                    <th>Target Type</th>
+                    <th>Transformation Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>product_id</code></td>
+                    <td><code>123</code></td>
+                    <td><code>123</code></td>
+                    <td>Integer</td>
+                    <td>Casting to strict primary integer</td>
+                </tr>
+                <tr>
+                    <td><code>name</code></td>
+                    <td><code>'iPhone 14 '</code></td>
+                    <td><code>'iPhone 14'</code></td>
+                    <td>String</td>
+                    <td>Whitespace trimming (<code>.strip()</code>)</td>
+                </tr>
+                <tr>
+                    <td><code>price</code></td>
+                    <td><code>'79999 '</code></td>
+                    <td><code>79999</code></td>
+                    <td>Integer</td>
+                    <td>Strip and parse as <code>int</code></td>
+                </tr>
+                <tr>
+                    <td><code>category</code></td>
+                    <td><code>' Mobiles'</code></td>
+                    <td><code>'mobiles'</code></td>
+                    <td>String</td>
+                    <td>Strip and lowercase standardization</td>
+                </tr>
+                <tr>
+                    <td><code>rating</code></td>
+                    <td><code>'4.5 '</code></td>
+                    <td><code>4.5</code></td>
+                    <td>Float</td>
+                    <td>Strip and parse as <code>float</code></td>
+                </tr>
+                <tr>
+                    <td><code>stock</code></td>
+                    <td><code>'Yes'</code></td>
+                    <td><code>True</code></td>
+                    <td>Boolean</td>
+                    <td>Boolean mapping (<code>'Yes' &rarr; True</code>)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <pre><code># Python Cleaning Script (task3_clean_product.py)
+cleaned_record = {
+    'product_id': int(raw['product_id']),
+    'name': raw['name'].strip(),
+    'price': int(raw['price'].strip()),
+    'category': raw['category'].strip().lower(),
+    'rating': float(raw['rating'].strip()),
+    'stock': True if raw['stock'].strip().lower() in ['yes', 'true', '1'] else False
+}</code></pre>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="section-card">
+        <h2><span class="badge">Task 4</span> Order Data Transformation & Customer Aggregation</h2>
+        <p><strong>Raw Input Transactions:</strong> <code>(A, Pizza, 300), (B, Burger, 150), (A, Burger, 150)</code></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Total Spend</th>
+                    <th>Total Orders</th>
+                    <th>Items Ordered</th>
+                    <th>Average Order Value (AOV)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>User A</strong></td>
+                    <td><strong>Rs. 450</strong></td>
+                    <td>2</td>
+                    <td>Pizza, Burger</td>
+                    <td>Rs. 225.00</td>
+                </tr>
+                <tr>
+                    <td><strong>User B</strong></td>
+                    <td><strong>Rs. 150</strong></td>
+                    <td>1</td>
+                    <td>Burger</td>
+                    <td>Rs. 150.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pre><code>-- SQL Query to Aggregate Customer Orders
+SELECT 
+    user_id,
+    COUNT(*) AS total_orders,
+    SUM(price) AS total_spend_inr,
+    GROUP_CONCAT(item SEPARATOR ', ') AS items_ordered,
+    ROUND(AVG(price), 2) AS avg_order_value_inr
+FROM customer_orders
+GROUP BY user_id;</code></pre>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="section-card">
+        <h2><span class="badge">Task 5</span> BookMyShow Ticket Sales Analysis & Chart</h2>
+        
+        <div class="img-container">
+            <img src="Task_5_BookMyShow_Tickets_BarChart.png" alt="BookMyShow Ticket Sales Bar Chart">
+            <div class="img-caption">Figure 2.0: Opening weekend ticket sales comparison across premier cinema titles.</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Movie Title</th>
+                    <th>Genre</th>
+                    <th>Tickets Sold</th>
+                    <th>Avg Price</th>
+                    <th>Total Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Dune: Part Two</strong></td>
+                    <td>Sci-Fi / Adventure</td>
+                    <td>42,600</td>
+                    <td>Rs. 380</td>
+                    <td>Rs. 1,61,88,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Oppenheimer</strong></td>
+                    <td>Biographical Drama</td>
+                    <td>31,500</td>
+                    <td>Rs. 420</td>
+                    <td>Rs. 1,32,30,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Inception (Special)</strong></td>
+                    <td>Sci-Fi / Action</td>
+                    <td>18,400</td>
+                    <td>Rs. 350</td>
+                    <td>Rs. 64,40,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insight-box">
+            <strong>Managerial & Executive Insight:</strong><br>
+            <em>Dune: Part Two captures 46% of total weekend tickets sold, generating Rs. 16.1M in revenue. Concurrently, Oppenheimer commands the highest Average Ticket Price (Rs. 420) due to heavy IMAX 70mm adoption. Multiplex managers should dynamically reallocate 30% of underperforming afternoon screens to Dune evening slots and introduce bundled gourmet concessions for Oppenheimer viewers at digital checkout to capture an incremental Rs. 1.8M in profit.</em>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

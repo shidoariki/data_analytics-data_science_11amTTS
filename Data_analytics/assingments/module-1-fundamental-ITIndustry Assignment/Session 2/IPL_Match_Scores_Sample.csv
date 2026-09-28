@@ -1,0 +1,16 @@
+match_id,date,team1,team2,winner,result,result_margin,player_of_match
+1359475,2023-03-31,Chennai Super Kings,Gujarat Titans,Chennai Super Kings,runs,22,Rohit Sharma
+1359476,2023-04-01,Gujarat Titans,Chennai Super Kings,Gujarat Titans,runs,16,Faf du Plessis
+1359477,2023-04-02,Chennai Super Kings,Mumbai Indians,Mumbai Indians,runs,62,Devon Conway
+1359478,2023-04-03,Mumbai Indians,Chennai Super Kings,Chennai Super Kings,wickets,5,Hardik Pandya
+1359479,2023-04-04,Chennai Super Kings,Lucknow Super Giants,Chennai Super Kings,wickets,2,Sanju Samson
+1359480,2023-04-05,Lucknow Super Giants,Chennai Super Kings,Chennai Super Kings,runs,53,Virat Kohli
+1359481,2023-04-06,Chennai Super Kings,Royal Challengers Bangalore,Chennai Super Kings,runs,10,Suryakumar Yadav
+1359482,2023-04-07,Royal Challengers Bangalore,Chennai Super Kings,Royal Challengers Bangalore,wickets,5,Axar Patel
+1359483,2023-04-08,Chennai Super Kings,Rajasthan Royals,Rajasthan Royals,runs,39,Virat Kohli
+1359484,2023-04-09,Rajasthan Royals,Chennai Super Kings,Rajasthan Royals,wickets,7,Rashid Khan
+1359485,2023-04-10,Chennai Super Kings,Kolkata Knight Riders,Chennai Super Kings,runs,9,KL Rahul
+1359486,2023-04-11,Kolkata Knight Riders,Chennai Super Kings,Kolkata Knight Riders,wickets,4,David Warner
+1359487,2023-04-12,Chennai Super Kings,Punjab Kings,Punjab Kings,runs,36,Ruturaj Gaikwad
+1359488,2023-04-13,Punjab Kings,Chennai Super Kings,Chennai Super Kings,wickets,4,Hardik Pandya
+1359489,2023-04-14,Chennai Super Kings,Delhi Capitals,Chennai Super Kings,runs,24,Ravindra Jadeja

@@ -1,0 +1,251 @@
+Order_ID,Customer_ID,Category,City,Order_Value_INR,Discount_Applied_INR,Payment_Method,Is_Returned,Return_Reason,Customer_Rating
+OD100200,CUST_1051,Beauty & Personal Care,Delhi NCR,2230,295,Cash on Delivery (COD),1,Different from Image,4
+OD100201,CUST_1023,Electronics,Hyderabad,23559,794,Net Banking,0,N/A (Retained),4
+OD100202,CUST_1075,Electronics,Hyderabad,9217,1913,Credit Card,0,N/A (Retained),4
+OD100203,CUST_1079,Mobiles,Pune,20981,2814,Cash on Delivery (COD),0,N/A (Retained),3
+OD100204,CUST_1050,Electronics,Bengaluru,26645,2903,UPI,0,N/A (Retained),4
+OD100205,CUST_1052,Mobiles,Ahmedabad,16711,2728,Credit Card,1,Defective/Damaged,1
+OD100206,CUST_1003,Fashion,Pune,2813,134,UPI,0,N/A (Retained),4
+OD100207,CUST_1073,Beauty & Personal Care,Pune,1378,363,Cash on Delivery (COD),0,N/A (Retained),5
+OD100208,CUST_1079,Home & Kitchen,Hyderabad,9197,949,Credit Card,0,N/A (Retained),4
+OD100209,CUST_1044,Mobiles,Bengaluru,20928,524,Cash on Delivery (COD),0,N/A (Retained),5
+OD100210,CUST_1034,Home & Kitchen,Delhi NCR,3918,262,UPI,0,N/A (Retained),5
+OD100211,CUST_1033,Mobiles,Pune,50128,3369,UPI,0,N/A (Retained),4
+OD100212,CUST_1046,Home & Kitchen,Bengaluru,2853,458,Cash on Delivery (COD),1,Size/Fit Issue,1
+OD100213,CUST_1076,Mobiles,Bengaluru,37970,4584,UPI,0,N/A (Retained),4
+OD100214,CUST_1042,Mobiles,Hyderabad,25935,1225,UPI,0,N/A (Retained),5
+OD100215,CUST_1056,Mobiles,Ahmedabad,20260,4516,Cash on Delivery (COD),0,N/A (Retained),5
+OD100216,CUST_1061,Mobiles,Bengaluru,10027,2086,Debit Card,0,N/A (Retained),4
+OD100217,CUST_1026,Fashion,Hyderabad,1649,368,Debit Card,1,Defective/Damaged,2
+OD100218,CUST_1061,Beauty & Personal Care,Ahmedabad,2543,441,UPI,0,N/A (Retained),5
+OD100219,CUST_1058,Electronics,Mumbai,2375,1166,Credit Card,0,N/A (Retained),5
+OD100220,CUST_1052,Fashion,Pune,3221,937,UPI,1,Customer Changed Mind,3
+OD100221,CUST_1069,Fashion,Bengaluru,2581,865,UPI,0,N/A (Retained),4
+OD100222,CUST_1035,Mobiles,Delhi NCR,29175,932,Cash on Delivery (COD),0,N/A (Retained),4
+OD100223,CUST_1038,Beauty & Personal Care,Bengaluru,2665,164,Debit Card,0,N/A (Retained),5
+OD100224,CUST_1006,Electronics,Mumbai,15190,930,Net Banking,0,N/A (Retained),5
+OD100225,CUST_1068,Beauty & Personal Care,Delhi NCR,1228,435,UPI,0,N/A (Retained),5
+OD100226,CUST_1053,Home & Kitchen,Ahmedabad,2206,1357,UPI,0,N/A (Retained),3
+OD100227,CUST_1024,Mobiles,Pune,48053,3433,Credit Card,0,N/A (Retained),5
+OD100228,CUST_1032,Fashion,Ahmedabad,3502,893,UPI,0,N/A (Retained),4
+OD100229,CUST_1058,Fashion,Pune,4394,532,UPI,0,N/A (Retained),5
+OD100230,CUST_1020,Fashion,Ahmedabad,3970,353,Debit Card,0,N/A (Retained),4
+OD100231,CUST_1063,Electronics,Bengaluru,13953,982,Net Banking,0,N/A (Retained),5
+OD100232,CUST_1036,Beauty & Personal Care,Bengaluru,2152,589,Credit Card,0,N/A (Retained),4
+OD100233,CUST_1031,Home & Kitchen,Delhi NCR,5644,1410,UPI,0,N/A (Retained),4
+OD100234,CUST_1023,Mobiles,Pune,23978,1828,UPI,0,N/A (Retained),5
+OD100235,CUST_1008,Home & Kitchen,Hyderabad,4452,458,UPI,0,N/A (Retained),3
+OD100236,CUST_1006,Fashion,Hyderabad,875,536,UPI,1,Different from Image,1
+OD100237,CUST_1065,Fashion,Pune,1203,1180,UPI,0,N/A (Retained),5
+OD100238,CUST_1048,Mobiles,Pune,39539,1969,UPI,0,N/A (Retained),4
+OD100239,CUST_1004,Fashion,Pune,2671,694,UPI,0,N/A (Retained),5
+OD100240,CUST_1012,Beauty & Personal Care,Mumbai,2854,198,UPI,0,N/A (Retained),3
+OD100241,CUST_1061,Home & Kitchen,Bengaluru,1306,1381,Debit Card,0,N/A (Retained),4
+OD100242,CUST_1047,Mobiles,Hyderabad,62517,3820,UPI,0,N/A (Retained),5
+OD100243,CUST_1066,Mobiles,Delhi NCR,10790,1022,Cash on Delivery (COD),1,Defective/Damaged,1
+OD100244,CUST_1061,Home & Kitchen,Ahmedabad,7441,1229,UPI,0,N/A (Retained),4
+OD100245,CUST_1022,Mobiles,Pune,12490,2185,Debit Card,0,N/A (Retained),4
+OD100246,CUST_1000,Fashion,Hyderabad,874,806,UPI,1,Different from Image,4
+OD100247,CUST_1011,Fashion,Ahmedabad,3763,1002,UPI,0,N/A (Retained),5
+OD100248,CUST_1039,Beauty & Personal Care,Ahmedabad,1025,257,UPI,1,Size/Fit Issue,3
+OD100249,CUST_1007,Fashion,Mumbai,3776,410,UPI,1,Customer Changed Mind,1
+OD100250,CUST_1074,Home & Kitchen,Ahmedabad,9217,867,Credit Card,0,N/A (Retained),4
+OD100251,CUST_1048,Home & Kitchen,Ahmedabad,7554,577,UPI,0,N/A (Retained),5
+OD100252,CUST_1054,Home & Kitchen,Bengaluru,4086,848,UPI,0,N/A (Retained),4
+OD100253,CUST_1012,Beauty & Personal Care,Bengaluru,3369,515,UPI,0,N/A (Retained),5
+OD100254,CUST_1051,Electronics,Hyderabad,17464,1750,UPI,0,N/A (Retained),5
+OD100255,CUST_1015,Home & Kitchen,Hyderabad,9275,1494,Cash on Delivery (COD),1,Different from Image,4
+OD100256,CUST_1074,Mobiles,Ahmedabad,56032,4400,Debit Card,0,N/A (Retained),4
+OD100257,CUST_1039,Mobiles,Mumbai,18062,2809,Cash on Delivery (COD),0,N/A (Retained),4
+OD100258,CUST_1064,Beauty & Personal Care,Bengaluru,3455,464,Cash on Delivery (COD),0,N/A (Retained),3
+OD100259,CUST_1060,Fashion,Delhi NCR,1887,577,UPI,1,Size/Fit Issue,2
+OD100260,CUST_1057,Home & Kitchen,Hyderabad,7274,1053,Cash on Delivery (COD),0,N/A (Retained),4
+OD100261,CUST_1024,Home & Kitchen,Pune,7778,1469,Credit Card,0,N/A (Retained),4
+OD100262,CUST_1079,Fashion,Delhi NCR,1585,864,Cash on Delivery (COD),1,Defective/Damaged,1
+OD100263,CUST_1014,Fashion,Hyderabad,2097,910,Debit Card,0,N/A (Retained),5
+OD100264,CUST_1015,Beauty & Personal Care,Ahmedabad,1407,143,UPI,0,N/A (Retained),4
+OD100265,CUST_1059,Electronics,Ahmedabad,8388,1469,UPI,1,Defective/Damaged,1
+OD100266,CUST_1076,Electronics,Hyderabad,3519,2833,UPI,0,N/A (Retained),4
+OD100267,CUST_1024,Fashion,Pune,775,129,Cash on Delivery (COD),1,Defective/Damaged,2
+OD100268,CUST_1048,Fashion,Mumbai,4382,1026,UPI,0,N/A (Retained),4
+OD100269,CUST_1000,Mobiles,Pune,39388,3874,Debit Card,0,N/A (Retained),4
+OD100270,CUST_1052,Beauty & Personal Care,Mumbai,1109,162,UPI,0,N/A (Retained),4
+OD100271,CUST_1003,Mobiles,Bengaluru,12578,1709,Cash on Delivery (COD),1,Size/Fit Issue,2
+OD100272,CUST_1002,Fashion,Ahmedabad,4375,197,Cash on Delivery (COD),0,N/A (Retained),4
+OD100273,CUST_1046,Fashion,Hyderabad,3345,334,Debit Card,1,Delayed Delivery,5
+OD100274,CUST_1049,Electronics,Pune,3911,2233,Credit Card,0,N/A (Retained),4
+OD100275,CUST_1078,Fashion,Mumbai,4303,261,Cash on Delivery (COD),0,N/A (Retained),4
+OD100276,CUST_1068,Beauty & Personal Care,Hyderabad,1008,368,UPI,0,N/A (Retained),4
+OD100277,CUST_1022,Mobiles,Delhi NCR,45247,1318,UPI,0,N/A (Retained),5
+OD100278,CUST_1066,Fashion,Mumbai,1472,1003,Debit Card,0,N/A (Retained),4
+OD100279,CUST_1021,Mobiles,Bengaluru,29578,4523,Credit Card,0,N/A (Retained),4
+OD100280,CUST_1026,Mobiles,Bengaluru,47827,2802,Credit Card,0,N/A (Retained),4
+OD100281,CUST_1025,Home & Kitchen,Bengaluru,9380,851,Credit Card,0,N/A (Retained),4
+OD100282,CUST_1027,Fashion,Mumbai,742,377,Cash on Delivery (COD),0,N/A (Retained),5
+OD100283,CUST_1017,Fashion,Delhi NCR,1008,911,UPI,1,Defective/Damaged,4
+OD100284,CUST_1043,Mobiles,Hyderabad,47350,4051,Credit Card,0,N/A (Retained),3
+OD100285,CUST_1033,Electronics,Bengaluru,11537,1144,Credit Card,0,N/A (Retained),5
+OD100286,CUST_1058,Fashion,Hyderabad,4241,108,UPI,1,Delayed Delivery,4
+OD100287,CUST_1061,Fashion,Bengaluru,2645,551,UPI,0,N/A (Retained),3
+OD100288,CUST_1065,Electronics,Delhi NCR,23152,922,Cash on Delivery (COD),1,Different from Image,4
+OD100289,CUST_1065,Electronics,Mumbai,21891,723,UPI,0,N/A (Retained),4
+OD100290,CUST_1019,Mobiles,Bengaluru,25873,3115,Debit Card,0,N/A (Retained),4
+OD100291,CUST_1002,Mobiles,Mumbai,40172,2970,Credit Card,0,N/A (Retained),5
+OD100292,CUST_1064,Mobiles,Bengaluru,42759,2622,Cash on Delivery (COD),0,N/A (Retained),4
+OD100293,CUST_1048,Home & Kitchen,Ahmedabad,1881,1123,Net Banking,0,N/A (Retained),4
+OD100294,CUST_1034,Beauty & Personal Care,Pune,2811,505,UPI,0,N/A (Retained),5
+OD100295,CUST_1034,Mobiles,Hyderabad,44856,4585,UPI,0,N/A (Retained),4
+OD100296,CUST_1017,Home & Kitchen,Pune,6229,855,Cash on Delivery (COD),0,N/A (Retained),4
+OD100297,CUST_1016,Beauty & Personal Care,Mumbai,3205,393,Credit Card,0,N/A (Retained),5
+OD100298,CUST_1006,Home & Kitchen,Mumbai,7708,968,UPI,0,N/A (Retained),5
+OD100299,CUST_1035,Beauty & Personal Care,Bengaluru,1132,459,UPI,1,Size/Fit Issue,3
+OD100300,CUST_1073,Fashion,Pune,2076,602,Credit Card,0,N/A (Retained),4
+OD100301,CUST_1007,Mobiles,Ahmedabad,49601,3385,Cash on Delivery (COD),0,N/A (Retained),4
+OD100302,CUST_1042,Electronics,Ahmedabad,25573,1833,UPI,0,N/A (Retained),4
+OD100303,CUST_1045,Electronics,Mumbai,14906,1912,Credit Card,1,Delayed Delivery,2
+OD100304,CUST_1067,Home & Kitchen,Hyderabad,2127,906,Cash on Delivery (COD),0,N/A (Retained),4
+OD100305,CUST_1028,Mobiles,Bengaluru,34795,1009,Cash on Delivery (COD),0,N/A (Retained),5
+OD100306,CUST_1053,Home & Kitchen,Bengaluru,5313,927,Cash on Delivery (COD),0,N/A (Retained),3
+OD100307,CUST_1008,Mobiles,Bengaluru,28341,2291,UPI,0,N/A (Retained),5
+OD100308,CUST_1001,Fashion,Delhi NCR,2363,347,Cash on Delivery (COD),0,N/A (Retained),3
+OD100309,CUST_1023,Electronics,Ahmedabad,25743,1214,Credit Card,0,N/A (Retained),5
+OD100310,CUST_1027,Mobiles,Bengaluru,62858,1168,UPI,0,N/A (Retained),3
+OD100311,CUST_1060,Mobiles,Bengaluru,31851,2420,UPI,0,N/A (Retained),4
+OD100312,CUST_1029,Mobiles,Hyderabad,56010,3143,UPI,0,N/A (Retained),5
+OD100313,CUST_1065,Fashion,Bengaluru,2782,270,Credit Card,1,Customer Changed Mind,1
+OD100314,CUST_1002,Fashion,Mumbai,2653,980,Cash on Delivery (COD),0,N/A (Retained),5
+OD100315,CUST_1006,Electronics,Bengaluru,8228,749,Credit Card,0,N/A (Retained),4
+OD100316,CUST_1066,Beauty & Personal Care,Ahmedabad,663,183,UPI,0,N/A (Retained),5
+OD100317,CUST_1015,Fashion,Hyderabad,2184,456,UPI,1,Size/Fit Issue,1
+OD100318,CUST_1022,Home & Kitchen,Hyderabad,6393,1085,Cash on Delivery (COD),0,N/A (Retained),5
+OD100319,CUST_1010,Fashion,Mumbai,732,1013,UPI,0,N/A (Retained),5
+OD100320,CUST_1008,Fashion,Ahmedabad,4400,957,UPI,1,Different from Image,4
+OD100321,CUST_1013,Home & Kitchen,Mumbai,3043,295,Debit Card,0,N/A (Retained),5
+OD100322,CUST_1057,Beauty & Personal Care,Mumbai,407,552,UPI,0,N/A (Retained),4
+OD100323,CUST_1037,Mobiles,Hyderabad,55635,1428,Debit Card,1,Customer Changed Mind,1
+OD100324,CUST_1030,Home & Kitchen,Mumbai,6585,345,Debit Card,0,N/A (Retained),4
+OD100325,CUST_1061,Fashion,Mumbai,3478,191,UPI,0,N/A (Retained),4
+OD100326,CUST_1020,Home & Kitchen,Delhi NCR,7055,515,UPI,0,N/A (Retained),4
+OD100327,CUST_1023,Beauty & Personal Care,Hyderabad,1200,346,Credit Card,0,N/A (Retained),5
+OD100328,CUST_1061,Beauty & Personal Care,Delhi NCR,2778,108,UPI,0,N/A (Retained),5
+OD100329,CUST_1060,Electronics,Mumbai,3512,417,Credit Card,1,Different from Image,1
+OD100330,CUST_1011,Fashion,Ahmedabad,4352,969,Cash on Delivery (COD),0,N/A (Retained),4
+OD100331,CUST_1011,Fashion,Delhi NCR,3745,824,Cash on Delivery (COD),0,N/A (Retained),5
+OD100332,CUST_1024,Beauty & Personal Care,Ahmedabad,3461,569,UPI,1,Size/Fit Issue,2
+OD100333,CUST_1016,Mobiles,Hyderabad,27206,1042,Credit Card,0,N/A (Retained),4
+OD100334,CUST_1071,Beauty & Personal Care,Hyderabad,3065,514,Credit Card,0,N/A (Retained),5
+OD100335,CUST_1016,Electronics,Delhi NCR,14248,2677,Credit Card,0,N/A (Retained),4
+OD100336,CUST_1038,Fashion,Bengaluru,3180,911,Credit Card,0,N/A (Retained),4
+OD100337,CUST_1065,Mobiles,Mumbai,10012,1334,Net Banking,0,N/A (Retained),5
+OD100338,CUST_1038,Mobiles,Hyderabad,32105,2659,Cash on Delivery (COD),0,N/A (Retained),5
+OD100339,CUST_1009,Mobiles,Ahmedabad,23131,997,Cash on Delivery (COD),0,N/A (Retained),4
+OD100340,CUST_1067,Home & Kitchen,Hyderabad,955,1482,UPI,0,N/A (Retained),4
+OD100341,CUST_1067,Mobiles,Mumbai,24243,3148,Cash on Delivery (COD),0,N/A (Retained),5
+OD100342,CUST_1010,Beauty & Personal Care,Mumbai,3472,177,UPI,0,N/A (Retained),5
+OD100343,CUST_1073,Mobiles,Bengaluru,20253,4008,UPI,0,N/A (Retained),3
+OD100344,CUST_1046,Mobiles,Bengaluru,64719,1282,Cash on Delivery (COD),0,N/A (Retained),5
+OD100345,CUST_1061,Beauty & Personal Care,Delhi NCR,1056,173,Cash on Delivery (COD),0,N/A (Retained),4
+OD100346,CUST_1013,Home & Kitchen,Delhi NCR,3110,281,Cash on Delivery (COD),0,N/A (Retained),5
+OD100347,CUST_1075,Mobiles,Bengaluru,14783,2338,Credit Card,0,N/A (Retained),4
+OD100348,CUST_1004,Mobiles,Mumbai,22109,3574,UPI,1,Defective/Damaged,1
+OD100349,CUST_1044,Fashion,Hyderabad,2827,828,Cash on Delivery (COD),0,N/A (Retained),5
+OD100350,CUST_1032,Home & Kitchen,Delhi NCR,2933,320,Cash on Delivery (COD),1,Customer Changed Mind,4
+OD100351,CUST_1052,Electronics,Delhi NCR,5703,2666,Cash on Delivery (COD),0,N/A (Retained),3
+OD100352,CUST_1022,Mobiles,Delhi NCR,59978,505,UPI,0,N/A (Retained),5
+OD100353,CUST_1011,Mobiles,Hyderabad,63965,3343,Debit Card,0,N/A (Retained),5
+OD100354,CUST_1034,Mobiles,Delhi NCR,39769,4833,Cash on Delivery (COD),0,N/A (Retained),5
+OD100355,CUST_1036,Mobiles,Ahmedabad,52396,4762,UPI,0,N/A (Retained),5
+OD100356,CUST_1016,Electronics,Bengaluru,3479,2586,UPI,0,N/A (Retained),5
+OD100357,CUST_1075,Home & Kitchen,Delhi NCR,4137,191,Credit Card,0,N/A (Retained),4
+OD100358,CUST_1031,Home & Kitchen,Mumbai,2182,755,UPI,0,N/A (Retained),3
+OD100359,CUST_1038,Fashion,Hyderabad,1460,190,Debit Card,0,N/A (Retained),5
+OD100360,CUST_1026,Home & Kitchen,Pune,4561,1421,UPI,0,N/A (Retained),5
+OD100361,CUST_1005,Home & Kitchen,Hyderabad,4361,1351,Net Banking,0,N/A (Retained),4
+OD100362,CUST_1063,Home & Kitchen,Ahmedabad,4902,860,Credit Card,0,N/A (Retained),4
+OD100363,CUST_1052,Mobiles,Delhi NCR,51856,3317,Cash on Delivery (COD),1,Customer Changed Mind,4
+OD100364,CUST_1002,Mobiles,Bengaluru,42907,3232,UPI,0,N/A (Retained),4
+OD100365,CUST_1047,Fashion,Pune,1648,977,Credit Card,0,N/A (Retained),4
+OD100366,CUST_1071,Fashion,Pune,2471,760,UPI,0,N/A (Retained),5
+OD100367,CUST_1032,Beauty & Personal Care,Bengaluru,1863,107,UPI,0,N/A (Retained),5
+OD100368,CUST_1031,Mobiles,Pune,48635,3018,Debit Card,1,Delayed Delivery,1
+OD100369,CUST_1032,Beauty & Personal Care,Pune,597,268,UPI,0,N/A (Retained),4
+OD100370,CUST_1045,Electronics,Mumbai,19265,2864,UPI,0,N/A (Retained),5
+OD100371,CUST_1008,Beauty & Personal Care,Bengaluru,3093,442,Cash on Delivery (COD),0,N/A (Retained),4
+OD100372,CUST_1006,Electronics,Ahmedabad,22271,1546,Credit Card,1,Delayed Delivery,3
+OD100373,CUST_1074,Home & Kitchen,Ahmedabad,2188,1320,UPI,0,N/A (Retained),5
+OD100374,CUST_1044,Mobiles,Hyderabad,37400,2999,Debit Card,0,N/A (Retained),4
+OD100375,CUST_1055,Beauty & Personal Care,Delhi NCR,1620,171,UPI,0,N/A (Retained),4
+OD100376,CUST_1006,Fashion,Pune,2221,1030,Net Banking,0,N/A (Retained),5
+OD100377,CUST_1019,Fashion,Mumbai,2856,582,Cash on Delivery (COD),0,N/A (Retained),4
+OD100378,CUST_1065,Electronics,Ahmedabad,8835,1858,Credit Card,0,N/A (Retained),4
+OD100379,CUST_1017,Electronics,Bengaluru,20469,2745,UPI,0,N/A (Retained),4
+OD100380,CUST_1077,Fashion,Hyderabad,2519,371,Cash on Delivery (COD),0,N/A (Retained),4
+OD100381,CUST_1001,Mobiles,Bengaluru,63317,1661,UPI,0,N/A (Retained),4
+OD100382,CUST_1039,Electronics,Ahmedabad,13525,860,Net Banking,1,Size/Fit Issue,2
+OD100383,CUST_1075,Home & Kitchen,Bengaluru,5914,1428,Credit Card,0,N/A (Retained),4
+OD100384,CUST_1027,Mobiles,Hyderabad,39342,4018,UPI,0,N/A (Retained),4
+OD100385,CUST_1078,Electronics,Delhi NCR,8648,359,UPI,0,N/A (Retained),5
+OD100386,CUST_1028,Electronics,Delhi NCR,26247,1085,Credit Card,0,N/A (Retained),3
+OD100387,CUST_1019,Beauty & Personal Care,Delhi NCR,3348,401,UPI,0,N/A (Retained),4
+OD100388,CUST_1042,Fashion,Ahmedabad,1089,245,Credit Card,1,Size/Fit Issue,1
+OD100389,CUST_1007,Beauty & Personal Care,Bengaluru,841,179,Cash on Delivery (COD),0,N/A (Retained),4
+OD100390,CUST_1064,Home & Kitchen,Mumbai,952,441,UPI,0,N/A (Retained),5
+OD100391,CUST_1075,Mobiles,Bengaluru,47207,1470,Debit Card,0,N/A (Retained),4
+OD100392,CUST_1068,Electronics,Pune,27984,334,Debit Card,0,N/A (Retained),4
+OD100393,CUST_1047,Home & Kitchen,Hyderabad,7224,1329,Credit Card,0,N/A (Retained),4
+OD100394,CUST_1018,Home & Kitchen,Mumbai,3559,1316,Cash on Delivery (COD),0,N/A (Retained),4
+OD100395,CUST_1070,Mobiles,Bengaluru,31788,3629,UPI,0,N/A (Retained),4
+OD100396,CUST_1048,Fashion,Delhi NCR,884,763,UPI,0,N/A (Retained),5
+OD100397,CUST_1045,Fashion,Hyderabad,2623,627,Cash on Delivery (COD),1,Size/Fit Issue,1
+OD100398,CUST_1004,Fashion,Hyderabad,2458,533,UPI,0,N/A (Retained),5
+OD100399,CUST_1042,Mobiles,Delhi NCR,45610,4541,UPI,0,N/A (Retained),5
+OD100400,CUST_1014,Mobiles,Hyderabad,15577,2686,UPI,0,N/A (Retained),4
+OD100401,CUST_1026,Beauty & Personal Care,Ahmedabad,1330,385,Credit Card,0,N/A (Retained),4
+OD100402,CUST_1003,Home & Kitchen,Pune,6725,354,UPI,0,N/A (Retained),5
+OD100403,CUST_1055,Home & Kitchen,Hyderabad,9177,776,UPI,0,N/A (Retained),4
+OD100404,CUST_1044,Electronics,Delhi NCR,18406,1642,UPI,0,N/A (Retained),5
+OD100405,CUST_1014,Electronics,Mumbai,25506,2355,UPI,0,N/A (Retained),4
+OD100406,CUST_1067,Fashion,Delhi NCR,3218,990,Cash on Delivery (COD),0,N/A (Retained),3
+OD100407,CUST_1054,Electronics,Bengaluru,24364,806,Cash on Delivery (COD),1,Customer Changed Mind,3
+OD100408,CUST_1070,Fashion,Mumbai,3064,164,UPI,1,Different from Image,2
+OD100409,CUST_1017,Fashion,Pune,3425,117,Credit Card,0,N/A (Retained),5
+OD100410,CUST_1067,Home & Kitchen,Mumbai,7521,470,Cash on Delivery (COD),0,N/A (Retained),4
+OD100411,CUST_1072,Fashion,Delhi NCR,3006,586,UPI,0,N/A (Retained),5
+OD100412,CUST_1043,Mobiles,Hyderabad,42604,3560,UPI,0,N/A (Retained),4
+OD100413,CUST_1069,Mobiles,Ahmedabad,40677,3787,Debit Card,0,N/A (Retained),3
+OD100414,CUST_1043,Mobiles,Hyderabad,47949,1404,UPI,0,N/A (Retained),3
+OD100415,CUST_1054,Home & Kitchen,Bengaluru,9336,764,UPI,0,N/A (Retained),3
+OD100416,CUST_1004,Home & Kitchen,Ahmedabad,6642,230,UPI,0,N/A (Retained),5
+OD100417,CUST_1031,Mobiles,Ahmedabad,48980,662,Cash on Delivery (COD),0,N/A (Retained),4
+OD100418,CUST_1065,Fashion,Mumbai,2759,436,Cash on Delivery (COD),1,Size/Fit Issue,3
+OD100419,CUST_1054,Mobiles,Pune,64568,4331,Credit Card,0,N/A (Retained),5
+OD100420,CUST_1041,Fashion,Hyderabad,4023,1054,UPI,0,N/A (Retained),5
+OD100421,CUST_1051,Home & Kitchen,Hyderabad,2137,413,UPI,0,N/A (Retained),4
+OD100422,CUST_1009,Home & Kitchen,Bengaluru,3529,948,Credit Card,1,Customer Changed Mind,1
+OD100423,CUST_1040,Home & Kitchen,Hyderabad,1393,136,UPI,1,Delayed Delivery,1
+OD100424,CUST_1011,Beauty & Personal Care,Ahmedabad,1944,291,UPI,0,N/A (Retained),5
+OD100425,CUST_1042,Electronics,Ahmedabad,11741,1780,UPI,0,N/A (Retained),4
+OD100426,CUST_1010,Home & Kitchen,Bengaluru,2284,204,Credit Card,0,N/A (Retained),4
+OD100427,CUST_1006,Electronics,Ahmedabad,18279,840,Debit Card,0,N/A (Retained),4
+OD100428,CUST_1051,Electronics,Pune,4963,2682,Credit Card,0,N/A (Retained),4
+OD100429,CUST_1006,Fashion,Pune,3460,946,Cash on Delivery (COD),1,Size/Fit Issue,1
+OD100430,CUST_1020,Mobiles,Hyderabad,17540,2908,Cash on Delivery (COD),0,N/A (Retained),3
+OD100431,CUST_1052,Home & Kitchen,Hyderabad,4031,472,UPI,0,N/A (Retained),4
+OD100432,CUST_1054,Mobiles,Pune,27856,3818,UPI,0,N/A (Retained),4
+OD100433,CUST_1051,Home & Kitchen,Mumbai,8561,1437,Cash on Delivery (COD),0,N/A (Retained),4
+OD100434,CUST_1000,Home & Kitchen,Hyderabad,8893,454,UPI,0,N/A (Retained),5
+OD100435,CUST_1033,Fashion,Pune,2993,173,Debit Card,0,N/A (Retained),4
+OD100436,CUST_1031,Beauty & Personal Care,Hyderabad,469,460,UPI,0,N/A (Retained),5
+OD100437,CUST_1023,Mobiles,Ahmedabad,29428,1834,Cash on Delivery (COD),0,N/A (Retained),5
+OD100438,CUST_1006,Home & Kitchen,Delhi NCR,1656,1024,UPI,0,N/A (Retained),4
+OD100439,CUST_1037,Mobiles,Ahmedabad,53036,1525,Cash on Delivery (COD),0,N/A (Retained),5
+OD100440,CUST_1066,Mobiles,Pune,13808,4819,UPI,0,N/A (Retained),5
+OD100441,CUST_1009,Home & Kitchen,Ahmedabad,1791,780,Credit Card,0,N/A (Retained),4
+OD100442,CUST_1031,Electronics,Delhi NCR,4436,1875,UPI,1,Different from Image,2
+OD100443,CUST_1021,Fashion,Ahmedabad,1369,1075,UPI,0,N/A (Retained),4
+OD100444,CUST_1031,Fashion,Bengaluru,2721,799,UPI,1,Delayed Delivery,1
+OD100445,CUST_1021,Beauty & Personal Care,Pune,2643,109,Credit Card,0,N/A (Retained),3
+OD100446,CUST_1049,Mobiles,Delhi NCR,28830,2360,UPI,0,N/A (Retained),5
+OD100447,CUST_1002,Fashion,Delhi NCR,964,734,UPI,0,N/A (Retained),4
+OD100448,CUST_1007,Fashion,Bengaluru,4037,405,Cash on Delivery (COD),1,Size/Fit Issue,3
+OD100449,CUST_1009,Home & Kitchen,Pune,2435,597,Debit Card,0,N/A (Retained),4

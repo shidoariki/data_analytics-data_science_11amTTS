@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 - Session 5: Exploratory Data Analysis (EDA)</title>
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --teal: #0D9488;
+            --purple: #7C3AED;
+            --dark: #0F172A;
+            --light-bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --accent: #F59E0B;
+            --danger: #EF4444;
+            --success: #10B981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1E3A8A, #0F172A);
+            color: #FFFFFF;
+            padding: 35px 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .tag {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.35);
+            border: 1px solid #60A5FA;
+            color: #BFDBFE;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #94A3B8;
+            font-size: 15px;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card h2 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .badge {
+            background: #EFF6FF;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid #DBEAFE;
+        }
+
+        .badge-teal {
+            background: #F0FDFA;
+            color: var(--teal);
+            border: 1px solid #CCFBF1;
+        }
+
+        .badge-purple {
+            background: #F5F3FF;
+            color: var(--purple);
+            border: 1px solid #DDD6FE;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #F1F5F9;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: #F8FAFC;
+        }
+
+        .highlight-row {
+            background-color: #FEE2E2 !important;
+            color: #991B1B;
+            font-weight: 600;
+        }
+
+        .insight-box {
+            background: #FEF3C7;
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            color: #92400E;
+        }
+
+        .formula-card {
+            background: #F8FAFC;
+            border: 1px solid #CBD5E1;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 12px 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            color: #1E293B;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #F8FAFC;
+            padding: 12px;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .img-caption {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="tag">Module 1 &bull; Session 5</span>
+        <h1>Exploratory Data Analysis (EDA Overview)</h1>
+        <p>Univariate, Bivariate & Multivariate Analysis, Trend Identification & Anomaly Detection</p>
+    </header>
+
+    <!-- Visual Infographic -->
+    <div class="section-card">
+        <h2><span class="badge">Framework</span> EDA Taxonomy & Analytical Types</h2>
+        <div class="img-container">
+            <img src="EDA_Concepts_Framework.png" alt="EDA Taxonomy Framework">
+            <div class="img-caption">Figure 1.0: Theoretical foundations and applied IPL techniques for Univariate, Bivariate, and Multivariate EDA.</div>
+        </div>
+    </div>
+
+    <!-- Demo Case Study in Excel -->
+    <div class="section-card">
+        <h2><span class="badge">Demo</span> Quick EDA in Microsoft Excel</h2>
+        <p>Workbook Reference: <strong><code>IPL_Player_Performance_EDA.xlsx</code></strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technique</th>
+                    <th>Excel Menu / Tool</th>
+                    <th>Analytical Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Statistical Summarization</strong></td>
+                    <td><code>=AVERAGE()</code>, <code>=MEDIAN()</code>, <code>=STDEV.S()</code></td>
+                    <td>Computes central tendency, spread, and baseline metrics without manual filtering.</td>
+                </tr>
+                <tr>
+                    <td><strong>Box-and-Whisker Plot</strong></td>
+                    <td><code>Insert &gt; Statistic Chart &gt; Box and Whisker</code></td>
+                    <td>Visually isolates quartiles, median, interquartile range (IQR), and whisker caps.</td>
+                </tr>
+                <tr>
+                    <td><strong>Bivariate Scatter & Trendline</strong></td>
+                    <td><code>Insert &gt; Scatter (X, Y) &gt; Add Trendline (R²)</code></td>
+                    <td>Models linear regression between balls faced and runs scored.</td>
+                </tr>
+                <tr>
+                    <td><strong>Conditional Formatting Outliers</strong></td>
+                    <td><code>Home &gt; Conditional Formatting &gt; Highlight Cells &gt; Greater Than</code></td>
+                    <td>Flags exceptional centuries and match-winning knocks exceeding Mean + 2&sigma;.</td>
+                </tr>
+                <tr>
+                    <td><strong>Multivariate Pivot Table</strong></td>
+                    <td><code>Insert &gt; PivotTable</code> (Rows: Team, Cols: Venue, Values: Avg SR)</td>
+                    <td>Exposes pitch-level scoring variances and team agility across stadiums.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Task 1 & 2: Univariate -->
+    <div class="section-card">
+        <h2><span class="badge">Task 1 & 2</span> Univariate Analysis on 'Runs Scored'</h2>
+        <p>Calculated for 120 batting innings in the IPL dataset:</p>
+
+        <div class="img-container">
+            <img src="Task_2_Univariate_Runs_Distribution.png" alt="Univariate Runs Distribution">
+            <div class="img-caption">Figure 2.0: Boxplot and Frequency Histogram (with KDE curve) for batsman runs scored.</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Excel Formula</th>
+                    <th>Value</th>
+                    <th>Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mean (&mu;)</strong></td>
+                    <td><code>=AVERAGE(F2:F121)</code></td>
+                    <td><strong>33.42</strong></td>
+                    <td>Expected average runs contributed per batsman innings.</td>
+                </tr>
+                <tr>
+                    <td><strong>Median (Q2)</strong></td>
+                    <td><code>=MEDIAN(F2:F121)</code></td>
+                    <td><strong>31.00</strong></td>
+                    <td>Robust 50th percentile. Mean &gt; Median confirms positive (right) skew.</td>
+                </tr>
+                <tr>
+                    <td><strong>Minimum</strong></td>
+                    <td><code>=MIN(F2:F121)</code></td>
+                    <td><strong>0</strong></td>
+                    <td>Batsmen dismissed for ducks or scoreless cameo appearances.</td>
+                </tr>
+                <tr>
+                    <td><strong>Maximum</strong></td>
+                    <td><code>=MAX(F2:F121)</code></td>
+                    <td><strong>122</strong></td>
+                    <td>Peak match-winning century (Tim David vs RCB at Chinnaswamy).</td>
+                </tr>
+                <tr>
+                    <td><strong>Std Deviation (&sigma;)</strong></td>
+                    <td><code>=STDEV.S(F2:F121)</code></td>
+                    <td><strong>21.81</strong></td>
+                    <td>Dispersion metric showing substantial scoring variation around the mean.</td>
+                </tr>
+                <tr>
+                    <td><strong>Interquartile Range (IQR)</strong></td>
+                    <td><code>=QUARTILE(F2:F121, 3) - QUARTILE(F2:F121, 1)</code></td>
+                    <td><strong>26.25</strong></td>
+                    <td>Middle 50% scoring envelope spans between 19.00 (Q1) and 45.25 (Q3).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Task 3: Bivariate Scatter -->
+    <div class="section-card">
+        <h2><span class="badge-teal badge">Task 3</span> Bivariate Scatter Plot: Balls Faced vs. Runs Scored</h2>
+        
+        <div class="img-container">
+            <img src="Task_3_Bivariate_Scatter_Plot.png" alt="Bivariate Scatter Plot">
+            <div class="img-caption">Figure 3.0: Scatter plot illustrating linear association with ordinary least squares (OLS) regression fit.</div>
+        </div>
+
+        <div class="formula-card">
+            <strong>Regression Equation:</strong> Runs Scored &approx; 1.48 &times; (Balls Faced) - 3.2<br>
+            <strong>Pearson Correlation (r):</strong> +0.923 (Very Strong Positive)<br>
+            <strong>Goodness of Fit (R²):</strong> 0.852 (85.2% of run variance explained by balls faced)
+        </div>
+
+        <p><strong>Key Takeaway:</strong> As players occupy the crease for longer durations, run accumulation increases at a near-linear rate of ~1.48 runs per ball, showing how time at the crease is the strongest predictor of aggregate score.</p>
+    </div>
+
+    <!-- Task 4: Outliers -->
+    <div class="section-card">
+        <h2><span class="badge">Task 4</span> Outlier Identification & Conditional Formatting</h2>
+        <p>Outlier threshold defined using the empirical statistical limit:</p>
+        <div class="formula-card">
+            Threshold = Mean + 2 &times; Std Dev = 33.42 + (2 &times; 21.81) = <strong>77.04 Runs</strong>
+        </div>
+
+        <div class="img-container">
+            <img src="Task_4_Outlier_Detection_Scatter.png" alt="Outlier Detection Scatter Plot">
+            <div class="img-caption">Figure 4.0: Innings index scatter plot with highlighted outliers exceeding the 77.04 run boundary.</div>
+        </div>
+
+        <p>The following 4 exceptional innings were flagged and highlighted in the Excel workbook:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Row</th>
+                    <th>Player</th>
+                    <th>Franchise</th>
+                    <th>Venue</th>
+                    <th>Balls</th>
+                    <th>Runs</th>
+                    <th>Strike Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td>46</td>
+                    <td>Yashasvi Jaiswal</td>
+                    <td>RR</td>
+                    <td>Eden Gardens, Kolkata</td>
+                    <td>53</td>
+                    <td>101</td>
+                    <td>190.57</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>56</td>
+                    <td>Tim David</td>
+                    <td>MI</td>
+                    <td>M Chinnaswamy, Bengaluru</td>
+                    <td>58</td>
+                    <td>122</td>
+                    <td>210.34</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>94</td>
+                    <td>Yashasvi Jaiswal</td>
+                    <td>RR</td>
+                    <td>Wankhede Stadium, Mumbai</td>
+                    <td>51</td>
+                    <td>108</td>
+                    <td>211.76</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>117</td>
+                    <td>Sanju Samson</td>
+                    <td>RR</td>
+                    <td>MA Chidambaram, Chennai</td>
+                    <td>50</td>
+                    <td>103</td>
+                    <td>206.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Task 5: Multivariate Pivot -->
+    <div class="section-card">
+        <h2><span class="badge-purple badge">Task 5</span> Multivariate Analysis: Team & Venue Performance</h2>
+        <p>Pivot table analyzing <strong>Average Strike Rate (%)</strong> across franchise teams and match venues:</p>
+
+        <div class="img-container">
+            <img src="Task_5_Multivariate_Pivot_Heatmap.png" alt="Multivariate Pivot Heatmap">
+            <div class="img-caption">Figure 5.0: Two-way heatmap representation of team strike rate variations across 5 major IPL stadiums.</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Franchise</th>
+                    <th>Eden Gardens</th>
+                    <th>M Chinnaswamy</th>
+                    <th>MA Chidambaram</th>
+                    <th>Narendra Modi</th>
+                    <th>Wankhede</th>
+                    <th>Team Avg SR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>CSK</td><td>134.2</td><td>148.6</td><td>138.1</td><td>132.4</td><td>144.8</td><td><strong>139.6</strong></td></tr>
+                <tr><td>GT</td><td>131.0</td><td>142.1</td><td>129.5</td><td>141.8</td><td>136.7</td><td><strong>136.2</strong></td></tr>
+                <tr><td>KKR</td><td>145.8</td><td>154.2</td><td>133.0</td><td>136.9</td><td>149.1</td><td><strong>143.8</strong></td></tr>
+                <tr><td>MI</td><td>141.2</td><td>161.4</td><td>131.7</td><td>139.0</td><td>152.6</td><td><strong>145.2</strong></td></tr>
+                <tr><td>RCB</td><td>139.5</td><td>158.9</td><td>128.4</td><td>134.1</td><td>146.3</td><td><strong>141.4</strong></td></tr>
+                <tr><td>RR</td><td>148.1</td><td>156.7</td><td>144.2</td><td>140.5</td><td>153.8</td><td><strong>148.7</strong></td></tr>
+                <tr><td><strong>Venue Avg</strong></td><td><strong>140.0</strong></td><td><strong>153.7</strong></td><td><strong>134.2</strong></td><td><strong>137.5</strong></td><td><strong>147.2</strong></td><td><strong>142.5</strong></td></tr>
+            </tbody>
+        </table>
+
+        <div class="insight-box">
+            <strong>Key Multivariate Finding:</strong><br>
+            Pitch dimensions and pitch pace dictate scoring rates far more than brand identity. <strong>M Chinnaswamy Stadium (153.7)</strong> and <strong>Wankhede Stadium (147.2)</strong> produce the highest strike rates across all teams, whereas <strong>MA Chidambaram Stadium (134.2)</strong> reduces aggregate strike rates by ~14% due to spin-friendly surface conditions.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

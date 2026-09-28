@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 - Session 6: Case Study Orientation & Dataset Flow</title>
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --teal: #0D9488;
+            --purple: #7C3AED;
+            --rose: #E11D48;
+            --dark: #0F172A;
+            --light-bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --accent: #F59E0B;
+            --success: #10B981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0F172A, #1E293B);
+            color: #FFFFFF;
+            padding: 35px 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .tag {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.35);
+            border: 1px solid #60A5FA;
+            color: #BFDBFE;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #94A3B8;
+            font-size: 15px;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card h2 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .badge {
+            background: #EFF6FF;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid #DBEAFE;
+        }
+
+        .badge-rose {
+            background: #FFF1F2;
+            color: var(--rose);
+            border: 1px solid #FECDD3;
+        }
+
+        .badge-teal {
+            background: #F0FDFA;
+            color: var(--teal);
+            border: 1px solid #CCFBF1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #F1F5F9;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: #F8FAFC;
+        }
+
+        .quote-box {
+            background: #EFF6FF;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            color: #1E40AF;
+        }
+
+        .impact-box {
+            background: #F0FDF4;
+            border-left: 4px solid var(--success);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            color: #166534;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #F8FAFC;
+            padding: 12px;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .img-caption {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .q-card {
+            background: #F8FAFC;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .q-card h4 {
+            color: var(--dark);
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .q-card p {
+            font-size: 13.5px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="tag">Module 1 &bull; Session 6</span>
+        <h1>Case Study Orientation & Data Pipeline Architecture</h1>
+        <p>Curriculum Case Studies, Data Ingestion Flow, and Industry Analytics Practice</p>
+    </header>
+
+    <!-- Visual Portfolio -->
+    <div class="section-card">
+        <h2><span class="badge">Portfolio</span> Curriculum Case Studies Overview</h2>
+        <div class="img-container">
+            <img src="Case_Studies_Portfolio_Overview.png" alt="Curriculum Case Studies Overview">
+            <div class="img-caption">Figure 1.0: Real-world multi-industry case studies forming the analytical core of upcoming modules.</div>
+        </div>
+    </div>
+
+    <!-- Data Flow Diagram -->
+    <div class="section-card">
+        <h2><span class="badge-teal badge">Pipeline Architecture</span> End-to-End Dataset Movement Flow</h2>
+        <div class="img-container">
+            <img src="Data_Pipeline_Flow_Diagram.png" alt="Data Pipeline Flow Diagram">
+            <div class="img-caption">Figure 2.0: The 6 architectural stages of modern cloud enterprise data pipelines.</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Components & Tools</th>
+                    <th>Analytical Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. Ingestion & Collection</strong></td>
+                    <td>Apache Kafka, PostgreSQL, Mobile App SDKs</td>
+                    <td>Captures user clicks, add-to-carts, payments, and sensor events in real-time.</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Raw Storage & Data Lake</strong></td>
+                    <td>AWS S3, Google Cloud Storage, Parquet</td>
+                    <td>Preserves raw, unmuted event streams for compliance and historical replayability.</td>
+                </tr>
+                <tr>
+                    <td><strong>3. Cleaning & Validation</strong></td>
+                    <td>Python (Pandas), PySpark, AWS Glue</td>
+                    <td>Removes duplicates, enforces type safety, and trims corrupted strings.</td>
+                </tr>
+                <tr>
+                    <td><strong>4. Modeling & Transformation</strong></td>
+                    <td>Snowflake, BigQuery, dbt, Star Schema</td>
+                    <td>Builds structured fact and dimension tables optimized for analytical querying.</td>
+                </tr>
+                <tr>
+                    <td><strong>5. Analytics & Visualization</strong></td>
+                    <td>Power BI, Tableau, DAX Measures</td>
+                    <td>Transforms tabular data into executive KPI dashboards and interactive drill-downs.</td>
+                </tr>
+                <tr>
+                    <td><strong>6. Business Action & ROI</strong></td>
+                    <td>Automated alerts, Dynamic Pricing, ML Scoring</td>
+                    <td>Translates analytical findings into measurable revenue growth and cost savings.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Task 1: Flipkart Business Questions -->
+    <div class="section-card">
+        <h2><span class="badge">Task 1</span> Flipkart E-Commerce: 3 Core Business Questions</h2>
+        
+        <div class="q-card">
+            <h4>Question 1: Cash-on-Delivery (COD) vs. Prepaid Return-to-Origin (RTO) Disparity</h4>
+            <p><em>"What is the exact correlation between payment method (COD vs. UPI/Card) and doorstep return rates across product categories, and how much margin is lost due to unfulfilled COD deliveries in Tier-2/3 cities?"</em></p>
+        </div>
+
+        <div class="q-card">
+            <h4>Question 2: Discount Elasticity vs. Return Propensity in Fashion</h4>
+            <p><em>"Does heavy discounting (&gt; 40%) in Fashion attract 'serial returners' who order multiple sizes with the intent to return, and what is the net profit per customer after accounting for reverse logistics costs?"</em></p>
+        </div>
+
+        <div class="q-card">
+            <h4>Question 3: Customer Satisfaction & Rating Threshold as a Churn Predictor</h4>
+            <p><em>"At what customer review rating threshold (e.g. &lt; 3.2 stars) or delivery delay threshold (&gt; 48 hours) does a customer's 90-day repeat purchase probability drop below 15%, and which automated intervention best mitigates churn?"</em></p>
+        </div>
+    </div>
+
+    <!-- Task 2 & 3: Expected Outcomes -->
+    <div class="section-card">
+        <h2><span class="badge">Task 2 & 3</span> Expected Outcomes & Executive Decision-Making</h2>
+        <p>Reference Dataset: <strong><code>Flipkart_Orders_Returns_Dataset.csv</code> / <code>.xlsx</code></strong> (250 records)</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Expected Outcome</th>
+                    <th>Analytical Deliverable</th>
+                    <th>Business Decision Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Automated RTO Risk Scoring</strong></td>
+                    <td>Machine learning classification scoring incoming COD orders as Low, Medium, or High Risk.</td>
+                    <td>Mandate a nominal Rs. 49 advance shipping deposit for High-Risk orders, cutting reverse logistics losses by <strong>Rs. 18.5M quarterly</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Catalog Return Diagnostics</strong></td>
+                    <td>Category-level matrix isolating SKUs with &gt; 25% returns due to 'Size/Fit Issues'.</td>
+                    <td>Replace static 2D size charts with 3D interactive size recommendation widgets, lifting retained apparel sales by <strong>12%</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Cohort Retention Curve</strong></td>
+                    <td>Survival curves tracking 30/60/90-day repeat purchases segmented by first-purchase category.</td>
+                    <td>Reallocate ad budgets toward high-LTV categories (Mobiles and Electronics) over high-churn promotional fashion.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Task 4: Swiggy Scenario -->
+    <div class="section-card">
+        <h2><span class="badge-rose badge">Task 4</span> Real-World Scenario: Swiggy Operations Analyst</h2>
+        
+        <div class="quote-box">
+            <strong>Target Business Question:</strong><br>
+            "How can Swiggy reduce delivery partner idle wait times at restaurant kitchens in Bangalore from 11.4 minutes to under 4.0 minutes during peak lunch hours, without compromising food freshness or missing the 30-minute delivery SLA?"
+        </div>
+
+        <h3>Required Dataset Telemetry:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Field</th>
+                    <th>Source</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>order_id</code>, <code>order_timestamp</code></td><td>Order Service</td><td>Baseline timeline kickoff.</td></tr>
+                <tr><td><code>restaurant_id</code>, <code>cuisine_type</code></td><td>Merchant DB</td><td>Segments fast prep (burgers: 7m) vs. slow prep (biryani: 22m).</td></tr>
+                <tr><td><code>kitchen_prep_start_time</code></td><td>Kitchen Display</td><td>Captures actual cooking initiation.</td></tr>
+                <tr><td><code>rider_arrival_timestamp</code></td><td>Rider GPS Geofence</td><td>Pins the exact arrival time within 100m.</td></tr>
+                <tr><td><code>rider_handover_timestamp</code></td><td>QR Scan at Counter</td><td>Calculates exact partner idle wait duration.</td></tr>
+            </tbody>
+        </table>
+
+        <div class="impact-box">
+            <strong>Expected Outcome & Measurable Impact:</strong><br>
+            By transitioning from static dispatch to a <strong>Dynamic Just-In-Time (JIT) Predictive Dispatch Model</strong>—which factors in live kitchen velocity and only dispatches riders when food is within 4 minutes of completion—idle wait time drops from <strong>11.4 to 3.8 minutes (66% reduction)</strong>. Delivery partners complete <strong>1.8 additional orders per day</strong>, expanding platform capacity by 19% and saving <strong>Rs. 7.2M monthly</strong> in fleet delay compensation.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

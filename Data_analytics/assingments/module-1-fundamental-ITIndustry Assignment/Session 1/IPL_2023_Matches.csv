@@ -1,0 +1,75 @@
+match_id,match_no,date,city,venue,team1,team2,toss_winner,toss_decision,winner,result,result_margin,player_of_match
+1359475,1,2023-03-31,Chennai,"MA Chidambaram Stadium, Chepauk",Chennai Super Kings,Gujarat Titans,Chennai Super Kings,field,Chennai Super Kings,runs,22,Rohit Sharma
+1359476,2,2023-04-01,Mohali,Punjab Cricket Association IS Bindra Stadium,Gujarat Titans,Chennai Super Kings,Gujarat Titans,field,Gujarat Titans,runs,16,Faf du Plessis
+1359477,3,2023-04-02,Bengaluru,M Chinnaswamy Stadium,Chennai Super Kings,Mumbai Indians,Chennai Super Kings,bat,Mumbai Indians,runs,62,Devon Conway
+1359478,4,2023-04-03,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Mumbai Indians,Chennai Super Kings,Mumbai Indians,bat,Chennai Super Kings,wickets,5,Hardik Pandya
+1359479,5,2023-04-04,Bengaluru,M Chinnaswamy Stadium,Chennai Super Kings,Lucknow Super Giants,Lucknow Super Giants,bat,Chennai Super Kings,wickets,2,Sanju Samson
+1359480,6,2023-04-05,Kolkata,Eden Gardens,Lucknow Super Giants,Chennai Super Kings,Chennai Super Kings,bat,Chennai Super Kings,runs,53,Virat Kohli
+1359481,7,2023-04-06,Mohali,Punjab Cricket Association IS Bindra Stadium,Chennai Super Kings,Royal Challengers Bangalore,Royal Challengers Bangalore,field,Chennai Super Kings,runs,10,Suryakumar Yadav
+1359482,8,2023-04-07,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Royal Challengers Bangalore,Chennai Super Kings,Royal Challengers Bangalore,bat,Royal Challengers Bangalore,wickets,5,Axar Patel
+1359483,9,2023-04-08,Kolkata,Eden Gardens,Chennai Super Kings,Rajasthan Royals,Chennai Super Kings,field,Rajasthan Royals,runs,39,Virat Kohli
+1359484,10,2023-04-09,Hyderabad,Rajiv Gandhi International Stadium,Rajasthan Royals,Chennai Super Kings,Rajasthan Royals,bat,Rajasthan Royals,wickets,7,Rashid Khan
+1359485,11,2023-04-10,Mohali,Punjab Cricket Association IS Bindra Stadium,Chennai Super Kings,Kolkata Knight Riders,Chennai Super Kings,field,Chennai Super Kings,runs,9,KL Rahul
+1359486,12,2023-04-11,Delhi,Arun Jaitley Stadium,Kolkata Knight Riders,Chennai Super Kings,Chennai Super Kings,bat,Kolkata Knight Riders,wickets,4,David Warner
+1359487,13,2023-04-12,Delhi,Arun Jaitley Stadium,Chennai Super Kings,Punjab Kings,Punjab Kings,bat,Punjab Kings,runs,36,Ruturaj Gaikwad
+1359488,14,2023-04-13,Mohali,Punjab Cricket Association IS Bindra Stadium,Punjab Kings,Chennai Super Kings,Chennai Super Kings,field,Chennai Super Kings,wickets,4,Hardik Pandya
+1359489,15,2023-04-14,Mohali,Punjab Cricket Association IS Bindra Stadium,Chennai Super Kings,Delhi Capitals,Delhi Capitals,bat,Chennai Super Kings,runs,24,Ravindra Jadeja
+1359490,16,2023-04-15,Delhi,Arun Jaitley Stadium,Delhi Capitals,Chennai Super Kings,Delhi Capitals,field,Chennai Super Kings,wickets,9,Rashid Khan
+1359491,17,2023-04-16,Mohali,Punjab Cricket Association IS Bindra Stadium,Chennai Super Kings,Sunrisers Hyderabad,Chennai Super Kings,bat,Sunrisers Hyderabad,wickets,2,Mohammed Shami
+1359492,18,2023-04-17,Delhi,Arun Jaitley Stadium,Sunrisers Hyderabad,Chennai Super Kings,Sunrisers Hyderabad,field,Sunrisers Hyderabad,wickets,9,Ravindra Jadeja
+1359493,19,2023-04-18,Mohali,Punjab Cricket Association IS Bindra Stadium,Gujarat Titans,Mumbai Indians,Gujarat Titans,field,Gujarat Titans,runs,52,Ravindra Jadeja
+1359494,20,2023-04-19,Mohali,Punjab Cricket Association IS Bindra Stadium,Mumbai Indians,Gujarat Titans,Mumbai Indians,field,Gujarat Titans,runs,19,Sanju Samson
+1359495,21,2023-04-20,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Gujarat Titans,Lucknow Super Giants,Gujarat Titans,bat,Gujarat Titans,runs,15,David Warner
+1359496,22,2023-04-21,Chennai,"MA Chidambaram Stadium, Chepauk",Lucknow Super Giants,Gujarat Titans,Lucknow Super Giants,bat,Gujarat Titans,runs,38,Glenn Maxwell
+1359497,23,2023-04-22,Hyderabad,Rajiv Gandhi International Stadium,Gujarat Titans,Royal Challengers Bangalore,Royal Challengers Bangalore,bat,Gujarat Titans,wickets,7,Sanju Samson
+1359498,24,2023-04-23,Jaipur,Sawai Mansingh Stadium,Royal Challengers Bangalore,Gujarat Titans,Gujarat Titans,bat,Royal Challengers Bangalore,runs,13,KL Rahul
+1359499,25,2023-04-24,Ahmedabad,Narendra Modi Stadium,Gujarat Titans,Rajasthan Royals,Gujarat Titans,bat,Gujarat Titans,runs,85,Shubman Gill
+1359500,26,2023-04-25,Bengaluru,M Chinnaswamy Stadium,Rajasthan Royals,Gujarat Titans,Rajasthan Royals,bat,Gujarat Titans,runs,70,Suryakumar Yadav
+1359501,27,2023-04-26,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Gujarat Titans,Kolkata Knight Riders,Kolkata Knight Riders,bat,Gujarat Titans,wickets,4,David Warner
+1359502,28,2023-04-27,Delhi,Arun Jaitley Stadium,Kolkata Knight Riders,Gujarat Titans,Kolkata Knight Riders,bat,Kolkata Knight Riders,wickets,6,Heinrich Klaasen
+1359503,29,2023-04-28,Delhi,Arun Jaitley Stadium,Gujarat Titans,Punjab Kings,Punjab Kings,bat,Gujarat Titans,runs,56,KL Rahul
+1359504,30,2023-04-29,Chennai,"MA Chidambaram Stadium, Chepauk",Punjab Kings,Gujarat Titans,Punjab Kings,bat,Punjab Kings,wickets,3,Heinrich Klaasen
+1359505,31,2023-04-30,Mumbai,Wankhede Stadium,Gujarat Titans,Delhi Capitals,Delhi Capitals,field,Gujarat Titans,runs,61,Ruturaj Gaikwad
+1359506,32,2023-05-01,Chennai,"MA Chidambaram Stadium, Chepauk",Delhi Capitals,Gujarat Titans,Delhi Capitals,bat,Delhi Capitals,runs,26,Heinrich Klaasen
+1359507,33,2023-05-02,Jaipur,Sawai Mansingh Stadium,Gujarat Titans,Sunrisers Hyderabad,Sunrisers Hyderabad,bat,Sunrisers Hyderabad,runs,26,Rinku Singh
+1359508,34,2023-05-03,Ahmedabad,Narendra Modi Stadium,Sunrisers Hyderabad,Gujarat Titans,Gujarat Titans,field,Gujarat Titans,wickets,7,Ruturaj Gaikwad
+1359509,35,2023-05-04,Jaipur,Sawai Mansingh Stadium,Mumbai Indians,Lucknow Super Giants,Mumbai Indians,bat,Lucknow Super Giants,runs,12,Devon Conway
+1359510,36,2023-05-05,Mohali,Punjab Cricket Association IS Bindra Stadium,Lucknow Super Giants,Mumbai Indians,Lucknow Super Giants,field,Lucknow Super Giants,runs,79,David Warner
+1359511,37,2023-05-06,Mohali,Punjab Cricket Association IS Bindra Stadium,Mumbai Indians,Royal Challengers Bangalore,Mumbai Indians,bat,Mumbai Indians,runs,13,Yuzvendra Chahal
+1359512,38,2023-05-07,Chennai,"MA Chidambaram Stadium, Chepauk",Royal Challengers Bangalore,Mumbai Indians,Royal Challengers Bangalore,field,Royal Challengers Bangalore,runs,79,Yuzvendra Chahal
+1359513,39,2023-05-08,Ahmedabad,Narendra Modi Stadium,Mumbai Indians,Rajasthan Royals,Mumbai Indians,field,Rajasthan Royals,wickets,4,KL Rahul
+1359514,40,2023-05-09,Bengaluru,M Chinnaswamy Stadium,Rajasthan Royals,Mumbai Indians,Mumbai Indians,field,Rajasthan Royals,wickets,8,KL Rahul
+1359515,41,2023-05-10,Chennai,"MA Chidambaram Stadium, Chepauk",Mumbai Indians,Kolkata Knight Riders,Mumbai Indians,field,Mumbai Indians,runs,73,Faf du Plessis
+1359516,42,2023-05-11,Mohali,Punjab Cricket Association IS Bindra Stadium,Kolkata Knight Riders,Mumbai Indians,Mumbai Indians,bat,Mumbai Indians,runs,36,Sanju Samson
+1359517,43,2023-05-12,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Mumbai Indians,Punjab Kings,Mumbai Indians,field,Punjab Kings,runs,75,Mohammed Shami
+1359518,44,2023-05-13,Chennai,"MA Chidambaram Stadium, Chepauk",Punjab Kings,Mumbai Indians,Punjab Kings,field,Punjab Kings,runs,75,Hardik Pandya
+1359519,45,2023-05-14,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Mumbai Indians,Delhi Capitals,Delhi Capitals,bat,Delhi Capitals,runs,38,Glenn Maxwell
+1359520,46,2023-05-15,Jaipur,Sawai Mansingh Stadium,Delhi Capitals,Mumbai Indians,Mumbai Indians,bat,Delhi Capitals,wickets,5,Shubman Gill
+1359521,47,2023-05-16,Ahmedabad,Narendra Modi Stadium,Mumbai Indians,Sunrisers Hyderabad,Sunrisers Hyderabad,bat,Sunrisers Hyderabad,runs,61,Ruturaj Gaikwad
+1359522,48,2023-05-17,Delhi,Arun Jaitley Stadium,Sunrisers Hyderabad,Mumbai Indians,Sunrisers Hyderabad,bat,Sunrisers Hyderabad,runs,74,Shubman Gill
+1359523,49,2023-05-18,Kolkata,Eden Gardens,Lucknow Super Giants,Royal Challengers Bangalore,Lucknow Super Giants,field,Lucknow Super Giants,runs,44,Sanju Samson
+1359524,50,2023-05-19,Ahmedabad,Narendra Modi Stadium,Royal Challengers Bangalore,Lucknow Super Giants,Lucknow Super Giants,bat,Royal Challengers Bangalore,runs,50,Ruturaj Gaikwad
+1359525,51,2023-05-20,Delhi,Arun Jaitley Stadium,Lucknow Super Giants,Rajasthan Royals,Lucknow Super Giants,bat,Lucknow Super Giants,runs,57,MS Dhoni
+1359526,52,2023-05-21,Mumbai,Wankhede Stadium,Rajasthan Royals,Lucknow Super Giants,Lucknow Super Giants,field,Rajasthan Royals,wickets,3,Rohit Sharma
+1359527,53,2023-05-22,Delhi,Arun Jaitley Stadium,Lucknow Super Giants,Kolkata Knight Riders,Lucknow Super Giants,field,Lucknow Super Giants,runs,63,Sanju Samson
+1359528,54,2023-05-23,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Kolkata Knight Riders,Lucknow Super Giants,Kolkata Knight Riders,bat,Kolkata Knight Riders,runs,56,KL Rahul
+1359529,55,2023-05-24,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Lucknow Super Giants,Punjab Kings,Lucknow Super Giants,field,Punjab Kings,wickets,9,KL Rahul
+1359530,56,2023-05-25,Ahmedabad,Narendra Modi Stadium,Punjab Kings,Lucknow Super Giants,Punjab Kings,field,Punjab Kings,wickets,1,Rohit Sharma
+1359531,57,2023-05-26,Hyderabad,Rajiv Gandhi International Stadium,Lucknow Super Giants,Delhi Capitals,Delhi Capitals,field,Delhi Capitals,wickets,9,Rohit Sharma
+1359532,58,2023-05-27,Delhi,Arun Jaitley Stadium,Delhi Capitals,Lucknow Super Giants,Delhi Capitals,field,Delhi Capitals,wickets,1,Glenn Maxwell
+1359533,59,2023-05-28,Mohali,Punjab Cricket Association IS Bindra Stadium,Lucknow Super Giants,Sunrisers Hyderabad,Lucknow Super Giants,field,Sunrisers Hyderabad,runs,47,Yuzvendra Chahal
+1359534,60,2023-05-29,Kolkata,Eden Gardens,Sunrisers Hyderabad,Lucknow Super Giants,Sunrisers Hyderabad,field,Lucknow Super Giants,wickets,6,Rinku Singh
+1359535,61,2023-05-30,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Royal Challengers Bangalore,Rajasthan Royals,Royal Challengers Bangalore,bat,Rajasthan Royals,wickets,3,Yuzvendra Chahal
+1359536,62,2023-05-31,Hyderabad,Rajiv Gandhi International Stadium,Rajasthan Royals,Royal Challengers Bangalore,Royal Challengers Bangalore,field,Rajasthan Royals,wickets,5,Faf du Plessis
+1359537,63,2023-06-01,Delhi,Arun Jaitley Stadium,Royal Challengers Bangalore,Kolkata Knight Riders,Kolkata Knight Riders,field,Kolkata Knight Riders,wickets,4,Glenn Maxwell
+1359538,64,2023-06-02,Jaipur,Sawai Mansingh Stadium,Kolkata Knight Riders,Royal Challengers Bangalore,Kolkata Knight Riders,bat,Royal Challengers Bangalore,wickets,2,Suryakumar Yadav
+1359539,65,2023-06-03,Lucknow,Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium,Royal Challengers Bangalore,Punjab Kings,Royal Challengers Bangalore,bat,Royal Challengers Bangalore,runs,10,Suryakumar Yadav
+1359540,66,2023-06-04,Jaipur,Sawai Mansingh Stadium,Punjab Kings,Royal Challengers Bangalore,Punjab Kings,field,Royal Challengers Bangalore,runs,54,David Warner
+1359541,67,2023-06-05,Delhi,Arun Jaitley Stadium,Royal Challengers Bangalore,Delhi Capitals,Royal Challengers Bangalore,bat,Royal Challengers Bangalore,runs,59,Suryakumar Yadav
+1359542,68,2023-06-06,Mumbai,Wankhede Stadium,Delhi Capitals,Royal Challengers Bangalore,Royal Challengers Bangalore,bat,Delhi Capitals,runs,63,Hardik Pandya
+1359543,69,2023-06-07,Jaipur,Sawai Mansingh Stadium,Royal Challengers Bangalore,Sunrisers Hyderabad,Sunrisers Hyderabad,field,Sunrisers Hyderabad,wickets,3,David Warner
+1359544,70,2023-06-08,Jaipur,Sawai Mansingh Stadium,Sunrisers Hyderabad,Royal Challengers Bangalore,Royal Challengers Bangalore,bat,Royal Challengers Bangalore,wickets,4,Rashid Khan
+1359545,71,2023-06-09,Jaipur,Sawai Mansingh Stadium,Rajasthan Royals,Kolkata Knight Riders,Rajasthan Royals,field,Rajasthan Royals,wickets,6,KL Rahul
+1359546,72,2023-06-10,Mohali,Punjab Cricket Association IS Bindra Stadium,Rajasthan Royals,Punjab Kings,Rajasthan Royals,bat,Rajasthan Royals,runs,54,Hardik Pandya
+1359547,73,2023-06-11,Bengaluru,M Chinnaswamy Stadium,Rajasthan Royals,Delhi Capitals,Rajasthan Royals,field,Delhi Capitals,wickets,9,Axar Patel
+1359548,74,2023-06-12,Delhi,Arun Jaitley Stadium,Rajasthan Royals,Sunrisers Hyderabad,Rajasthan Royals,bat,Sunrisers Hyderabad,wickets,1,Devon Conway

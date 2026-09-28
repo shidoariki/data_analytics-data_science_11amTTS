@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 1: What is Data Analytics? Overview of Industry Tools - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+      --orange: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; font-size: 1.8rem; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; font-size: 1.35rem; }
+    h3 { color: #334155; margin-top: 24px; font-size: 1.15rem; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background: #f8fafc; }
+    .screenshot-card {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .screenshot-caption {
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      color: #64748b;
+      font-style: italic;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+      background: #dcfce7;
+      color: #15803d;
+      margin-left: 8px;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>SESSION 1: What is Data Analytics? Overview of Industry Tools</h1>
+  
+  <div class="meta-box">
+    <p><strong>Module:</strong> Module 1 — Fundamentals of IT Industry &amp; Analytics</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Date:</strong> September 28, 2026</p>
+    <p><strong>Submission Folder:</strong> <code>D:\DA\Data_analytics\assingments\module-1-fundamental-ITIndustry Assignment\Session 1</code></p>
+  </div>
+
+  <h2>1. Core Concepts &amp; Tool Ecosystem</h2>
+  <ul>
+    <li><strong>Data:</strong> Raw, context-free facts, numbers, and dates (e.g. <code>match_id = 1359475</code>).</li>
+    <li><strong>Information:</strong> Structured, contextualized data answering <em>who, what, when, where</em> (e.g. "GT defeated CSK by 5 wickets").</li>
+    <li><strong>Insights:</strong> Actionable business conclusions explaining <em>why</em> and guiding decision making (e.g. "Second-innings dew gives chasing teams a 68% win rate").</li>
+    <li><strong>The 4 Types of Analytics:</strong> Descriptive (What happened?), Diagnostic (Why did it happen?), Predictive (What will happen?), Prescriptive (What should we do?).</li>
+    <li><strong>Industry Roles:</strong> Data Analyst (Business Insights &amp; Reporting), Business Analyst (Business Requirements &amp; Process), Data Engineer (Pipelines &amp; Infrastructure), Data Scientist (ML Models &amp; Statistical Forecasting).</li>
+  </ul>
+
+  <h2>2. Assignment Tasks &amp; Solutions</h2>
+
+  <h3>Task 1: Excel Analysis of <code>IPL_2023_Matches.csv</code> <span class="badge">COMPLETED</span></h3>
+  <ul>
+    <li><strong>Raw Data Columns:</strong> <code>match_id</code>, <code>date</code>, <code>city</code>, <code>venue</code>, <code>team1</code>, <code>team2</code>, <code>toss_winner</code>, <code>toss_decision</code>, <code>result_margin</code>.</li>
+    <li><strong>Information Columns:</strong> <code>winner</code>, <code>result</code>, <code>player_of_match</code>.</li>
+    <li><strong>Key Insight:</strong> Across night games in venues with high evening humidity (e.g., Wankhede and Eden Gardens), teams winning the toss chose to bowl first over 65% of the time, and chasing teams achieved a noticeably higher victory rate due to the ball becoming slippery for spinners in the second innings.</li>
+  </ul>
+
+  <div class="screenshot-card">
+    <img src="Task_1_Excel_IPL_2023_Matches.jpg" alt="Excel IPL 2023 Matches Dataset">
+    <div class="screenshot-caption">Figure 1.1: Sample dataset IPL_2023_Matches.csv opened in Microsoft Excel.</div>
+  </div>
+
+  <h3>Task 2: SQL Import &amp; Total Matches Played Query <span class="badge">EXECUTED</span></h3>
+  <pre><code>USE ipl_analytics_db;
+
+SELECT 
+    team, 
+    COUNT(*) AS total_matches_played
+FROM (
+    SELECT team1 AS team FROM matches
+    UNION ALL
+    SELECT team2 AS team FROM matches
+) AS all_matches
+GROUP BY 
+    team
+ORDER BY 
+    total_matches_played DESC, 
+    team ASC;</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Total Matches Played</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Chennai Super Kings</strong></td><td>18</td></tr>
+      <tr><td><strong>Gujarat Titans</strong></td><td>18</td></tr>
+      <tr><td><strong>Lucknow Super Giants</strong></td><td>18</td></tr>
+      <tr><td><strong>Mumbai Indians</strong></td><td>18</td></tr>
+      <tr><td><strong>Royal Challengers Bangalore</strong></td><td>18</td></tr>
+      <tr><td><strong>Rajasthan Royals</strong></td><td>14</td></tr>
+      <tr><td><strong>Delhi Capitals</strong></td><td>11</td></tr>
+      <tr><td><strong>Kolkata Knight Riders</strong></td><td>11</td></tr>
+      <tr><td><strong>Punjab Kings</strong></td><td>11</td></tr>
+      <tr><td><strong>Sunrisers Hyderabad</strong></td><td>11</td></tr>
+    </tbody>
+  </table>
+
+  <div class="screenshot-card">
+    <img src="Task_2_Workbench_Matches_Played.jpg" alt="MySQL Workbench Task 2">
+    <div class="screenshot-caption">Figure 1.2: MySQL Workbench executing total matches played per team query.</div>
+  </div>
+
+  <h3>Task 3: Python Pandas Analysis — Matches Won by Each Team <span class="badge">EXECUTED</span></h3>
+  <pre><code>import pandas as pd
+
+df = pd.read_csv('IPL_2023_Matches.csv')
+matches_won = df['winner'].value_counts().reset_index()
+matches_won.columns = ['Team Name', 'Matches Won']
+print(matches_won.to_string(index=False))</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Matches Won</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Gujarat Titans</td><td>12</td></tr>
+      <tr><td>Chennai Super Kings</td><td>9</td></tr>
+      <tr><td>Royal Challengers Bangalore</td><td>9</td></tr>
+      <tr><td>Rajasthan Royals</td><td>9</td></tr>
+      <tr><td>Sunrisers Hyderabad</td><td>8</td></tr>
+      <tr><td>Delhi Capitals</td><td>7</td></tr>
+      <tr><td>Punjab Kings</td><td>6</td></tr>
+      <tr><td>Lucknow Super Giants</td><td>6</td></tr>
+      <tr><td>Mumbai Indians</td><td>4</td></tr>
+      <tr><td>Kolkata Knight Riders</td><td>4</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: Power BI Desktop — Matches Played per City <span class="badge">VISUALIZED</span></h3>
+  <div class="screenshot-card">
+    <img src="Task_4_PowerBI_Desktop_BarChart.jpg" alt="Power BI Desktop Bar Chart">
+    <div class="screenshot-caption">Figure 1.3: Power BI Desktop report featuring the Matches Played per City clustered bar chart.</div>
+  </div>
+
+  <div class="screenshot-card">
+    <img src="Task_4_Matches_Per_City_BarChart.png" alt="Matches Per City Chart Export">
+    <div class="screenshot-caption">Figure 1.4: High-resolution exported distribution chart of matches played per host city.</div>
+  </div>
+
+  <h3>Task 5: Predictive Analytics in Zomato &amp; IPL Streaming Apps <span class="badge">ANALYZED</span></h3>
+  
+  <div class="card">
+    <h4>🍕 Zomato: Dynamic ETA &amp; Predictive Kitchen Dispatch</h4>
+    <p>Zomato uses ensemble machine learning regression models taking inputs: historical meal preparation times, live kitchen backlogs, weather conditions (rain/storms), and courier GPS proximity.</p>
+    <ul>
+      <li><strong>User Experience Benefits:</strong> Eliminates order tracking anxiety through accurate minute-by-minute countdowns; riders are dispatched precisely when food finishes cooking, ensuring meals arrive hot and fresh.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>🏏 IPL Apps / JioCinema: Live Win Predictor &amp; Predictive CDN Scaling</h4>
+    <p>Predictive models evaluate required run rate (RRR), wickets in hand, and ball-by-ball batter vs bowler matchup statistics to compute real-time in-play win probabilities.</p>
+    <ul>
+      <li><strong>User Experience Benefits:</strong> Drives fan engagement through interactive live polls; concurrent viewer spike forecasts pre-allocate server edge caches seconds before star players bat, preventing stream lag and buffering.</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>
