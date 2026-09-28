@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 1: Introduction to Databases & Installation - Submission</title>
+  <style>
+    :root {
+      --primary: #00758f;
+      --secondary: #f29111;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background: #f8fafc; }
+    .screenshot-card {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .screenshot-caption {
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      color: #64748b;
+      font-style: italic;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+      background: #dcfce7;
+      color: #15803d;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>SESSION 1: Introduction to Databases & Installation</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Date:</strong> September 28, 2026</p>
+    <p><strong>Submission Folder:</strong> <code>D:\DA\Data_analytics\assingments\Session 1</code></p>
+  </div>
+
+  <h2>1. Core Concepts Summary</h2>
+  <ul>
+    <li><strong>Database (DB):</strong> A structured repository of data stored and accessed electronically for high-speed retrieval, querying, and updating.</li>
+    <li><strong>Relational Database Management System (RDBMS):</strong> Software governing relational data through tables, primary/foreign keys, schema rules, and ACID guarantees (MySQL, PostgreSQL, Oracle, SQL Server).</li>
+    <li><strong>Structured Query Language (SQL):</strong> The universal declarative standard language used to define schemas (DDL), query data (DQL), manipulate rows (DML), and control permissions (DCL).</li>
+  </ul>
+
+  <h2>2. Trainer Depth: Why SQL is the Backbone of Analytics</h2>
+  <ol>
+    <li><strong>Declarative Query Paradigm:</strong> In analytical workflows, analysts tell the database <em>what</em> dataset is needed rather than programming how to navigate disk memory or write procedural loops.</li>
+    <li><strong>Universal Industry Standard:</strong> SQL connects natively with data warehouses (BigQuery, Snowflake), BI dashboards (Tableau, Power BI, Looker), and programming languages (Python, R).</li>
+    <li><strong>In-Database Processing & Aggregation:</strong> Pushing filters, window functions, and joins directly to the database engine minimizes network latency and prevents memory bottlenecks on client machines.</li>
+    <li><strong>Consistency & Repeatability:</strong> SQL scripts offer immutable, audited, and version-controlled data pipelines that guarantee data reproducibility.</li>
+  </ol>
+
+  <h2>3. Demo: MySQL Installation & <code>analytics_db</code> Creation</h2>
+  <pre><code>CREATE DATABASE IF NOT EXISTS analytics_db;
+SHOW DATABASES LIKE 'analytics_db';</code></pre>
+  <p><strong>Status:</strong> <span class="badge">VERIFIED & EXECUTED</span></p>
+
+  <h2>4. Pending Tasks & Solutions</h2>
+
+  <h3>Task 1: MySQL Community Server Installation <span class="badge">COMPLETED</span></h3>
+  <p>MySQL Community Server was configured and running as a dedicated Windows Service on port <code>3306</code>.</p>
+  <div class="screenshot-card">
+    <img src="Task_1_MySQL_Installer_Completion.jpg" alt="MySQL Installer Completion Window">
+    <div class="screenshot-caption">Figure 1.1: Official MySQL Community Server Installation & Configuration Complete window.</div>
+  </div>
+
+  <h3>Task 2: Connect via MySQL Workbench & Create <code>music_streaming_db</code> <span class="badge">COMPLETED</span></h3>
+  <p>Connected to local MySQL instance at <code>localhost:3306</code> and executed:</p>
+  <pre><code>CREATE DATABASE IF NOT EXISTS music_streaming_db;</code></pre>
+  <div class="screenshot-card">
+    <img src="Task_2_Workbench_music_streaming_db.jpg" alt="MySQL Workbench music_streaming_db">
+    <div class="screenshot-caption">Figure 1.2: MySQL Workbench 8.0 CE showing active connection and successful creation of music_streaming_db.</div>
+  </div>
+
+  <h3>Task 3: Create <code>food_delivery_db</code> <span class="badge">COMPLETED</span></h3>
+  <p>SQL command to create the food delivery database:</p>
+  <pre><code>CREATE DATABASE IF NOT EXISTS food_delivery_db;
+USE food_delivery_db;</code></pre>
+  <div class="screenshot-card">
+    <img src="Task_3_Workbench_food_delivery_db.jpg" alt="MySQL Workbench food_delivery_db">
+    <div class="screenshot-caption">Figure 1.3: Execution of CREATE DATABASE food_delivery_db in MySQL Workbench with green checkmark output.</div>
+  </div>
+
+  <h3>Task 4: Differences Between MySQL and PostgreSQL</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature / Dimension</th>
+        <th>MySQL</th>
+        <th>PostgreSQL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Architecture & Engine Model</strong></td>
+        <td>Pure Relational DBMS with pluggable storage engines (InnoDB, MyISAM, Memory). Tuned for blazing-fast read operations and transactional web applications.</td>
+        <td>Object-Relational DBMS (ORDBMS). Highly extensible; allows custom operators, indexing structures (GiST, GIN, BRIN), and procedural languages.</td>
+      </tr>
+      <tr>
+        <td><strong>2. Complex Data Types & Analytics</strong></td>
+        <td>Standard SQL types with basic native JSON column support. Focused on straightforward transactional OLTP workloads.</td>
+        <td>Advanced analytical support: native <code>JSONB</code> (binary indexed JSON), arrays, hstore, PostGIS for geospatial analysis, full window functions and CTEs.</td>
+      </tr>
+      <tr>
+        <td><strong>3. Concurrency & MVCC</strong></td>
+        <td>InnoDB uses undo logs for MVCC. Specific DDL modifications can cause table-level or row metadata locks.</td>
+        <td>Robust Multi-Version Concurrency Control (MVCC) where readers never block writers and writers never block readers, excelling in concurrent write/analytical mixes.</td>
+      </tr>
+      <tr>
+        <td><strong>Popular Company / App Example</strong></td>
+        <td><strong>Meta (Facebook)</strong> — Powers the world's largest MySQL database infrastructure for user interactions, messages, and social graph queries.</td>
+        <td><strong>Spotify</strong> — Relies on PostgreSQL for catalog metadata, complex relational queries, playlist indexing, and user listening analytics.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>5. Local Verification</h2>
+  <pre><code>SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| analytics_db       |
+| food_delivery_db   |
+| music_streaming_db |
+| da_001             |
+| da_002             |
+| da_003             |
+| sakila             |
+| world              |
++--------------------+</code></pre>
+
+</div>
+
+</body>
+</html>
