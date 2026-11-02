@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 10: UNION & UNION ALL - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 10: UNION & UNION ALL</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 10</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts: Set Operations in SQL</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Set Operator</th>
+        <th>Duplicate Handling</th>
+        <th>Engine Execution</th>
+        <th>Best Used For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>UNION</code></td>
+        <td>Removes duplicate records</td>
+        <td>Performs sorting / hash de-duplication pass (slower)</td>
+        <td>Master customer registries, unique taxonomy lists</td>
+      </tr>
+      <tr>
+        <td><code>UNION ALL</code></td>
+        <td>Retains all records intact</td>
+        <td>Direct streaming concatenation (optimal speed)</td>
+        <td>Transaction consolidation, audit trails, event streaming</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Combine Online + Offline Sales Tables</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>SELECT sale_id, customer_name, amount, sale_date, 'Online' AS channel FROM online_sales
+UNION ALL
+SELECT sale_id, customer_name, amount, sale_date, 'Offline' AS channel FROM offline_sales
+ORDER BY sale_date;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>sale_id</th><th>customer_name</th><th>amount (INR)</th><th>sale_date</th><th>channel</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Rohan Sharma</td><td>1,450.00</td><td>2024-02-10</td><td>Online</td></tr>
+      <tr><td>101</td><td>Vikram Malhotra</td><td>1,850.00</td><td>2024-02-11</td><td>Offline</td></tr>
+      <tr><td>2</td><td>Priya Patel</td><td>2,800.00</td><td>2024-02-12</td><td>Online</td></tr>
+      <tr><td>102</td><td>Priya Patel</td><td>1,200.00</td><td>2024-02-14</td><td>Offline</td></tr>
+      <tr><td>3</td><td>Amit Verma</td><td>390.00</td><td>2024-02-15</td><td>Online</td></tr>
+      <tr><td>103</td><td>Ananya Sen</td><td>640.00</td><td>2024-02-16</td><td>Offline</td></tr>
+      <tr><td>4</td><td>Neha Gupta</td><td>5,200.00</td><td>2024-02-18</td><td>Online</td></tr>
+      <tr><td>104</td><td>Siddharth Joshi</td><td>3,100.00</td><td>2024-02-19</td><td>Offline</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Table Setup (AppOrders & InStoreOrders)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <p>Populated 4 app delivery orders and 4 in-store orders with dual-channel repeat patrons (<em>Rohan Sharma</em> and <em>Priya Mehta</em>).</p>
+
+  <h3>Task 2: Unique Customer Names Across Channels (UNION)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT customer_name FROM AppOrders
+UNION
+SELECT customer_name FROM InStoreOrders
+ORDER BY customer_name;</code></pre>
+  <table>
+    <thead><tr><th>customer_name</th></tr></thead>
+    <tbody>
+      <tr><td>Aarav Patel</td></tr>
+      <tr><td>Karan Joshi</td></tr>
+      <tr><td>Neha Verma</td></tr>
+      <tr><td>Priya Mehta</td></tr>
+      <tr><td>Rohan Sharma</td></tr>
+      <tr><td>Sneha Rao</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: Display Every Order Across Channels (UNION ALL)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT order_id, customer_name, amount, order_date, 'App Order' AS order_source FROM AppOrders
+UNION ALL
+SELECT order_id, customer_name, amount, order_date, 'In-Store' AS order_source FROM InStoreOrders
+ORDER BY order_date;</code></pre>
+  <table>
+    <thead>
+      <tr><th>order_id</th><th>customer_name</th><th>amount (INR)</th><th>order_date</th><th>order_source</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Rohan Sharma</td><td>450.00</td><td>2024-03-01</td><td>App Order</td></tr>
+      <tr><td>101</td><td>Karan Joshi</td><td>780.00</td><td>2024-03-01</td><td>In-Store</td></tr>
+      <tr><td>2</td><td>Priya Mehta</td><td>620.00</td><td>2024-03-02</td><td>App Order</td></tr>
+      <tr><td>102</td><td>Rohan Sharma</td><td>950.00</td><td>2024-03-02</td><td>In-Store</td></tr>
+      <tr><td>3</td><td>Aarav Patel</td><td>310.00</td><td>2024-03-03</td><td>App Order</td></tr>
+      <tr><td>103</td><td>Neha Verma</td><td>410.00</td><td>2024-03-03</td><td>In-Store</td></tr>
+      <tr><td>4</td><td>Sneha Rao</td><td>540.00</td><td>2024-03-04</td><td>App Order</td></tr>
+      <tr><td>104</td><td>Priya Mehta</td><td>530.00</td><td>2024-03-05</td><td>In-Store</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: Empirical Difference in Result Counts</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <table>
+    <thead>
+      <tr><th>Operation</th><th>Row Count</th><th>Explanation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>UNION</code></td><td><strong>6 Rows</strong></td><td>Removes cross-table duplicates for <em>Rohan Sharma</em> and <em>Priya Mehta</em>.</td></tr>
+      <tr><td><code>UNION ALL</code></td><td><strong>8 Rows</strong></td><td>Maintains full transactional volume without discarding duplicate shopper names.</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

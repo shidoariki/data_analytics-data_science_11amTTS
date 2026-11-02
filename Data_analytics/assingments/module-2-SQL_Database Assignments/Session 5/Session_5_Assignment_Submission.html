@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 5: DISTINCT, ORDER BY, LIMIT - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 5: DISTINCT, ORDER BY, LIMIT</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 5</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts & SQL Clauses</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Clause / Keyword</th>
+        <th>Syntax Pattern</th>
+        <th>Purpose & Analytical Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>DISTINCT</code></td>
+        <td><code>SELECT DISTINCT column FROM table</code></td>
+        <td>Removes duplicate records from projection to reveal unique categories, cities, or payment modes.</td>
+      </tr>
+      <tr>
+        <td><code>ORDER BY</code></td>
+        <td><code>ORDER BY col1 [ASC|DESC], col2 ...</code></td>
+        <td>Sorts the record set alphabetically, chronologically, or numerically (defaults to ASC).</td>
+      </tr>
+      <tr>
+        <td><code>LIMIT</code></td>
+        <td><code>LIMIT n [OFFSET m]</code></td>
+        <td>Restricts output row count to <code>n</code> rows, enabling Top-N analysis and UI pagination.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Top 10 Highest Selling Products</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>SELECT product_id, product_name, category, units_sold, revenue
+FROM products_catalog
+ORDER BY units_sold DESC
+LIMIT 10;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>product_id</th><th>product_name</th><th>category</th><th>units_sold</th><th>revenue (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>boAt Rockerz 450 Bluetooth Headphone</td><td>Audio</td><td>32,000</td><td>48,000,000.00</td></tr>
+      <tr><td>3</td><td>OnePlus Nord CE 3 Lite 5G</td><td>Electronics</td><td>28,500</td><td>57,000,000.00</td></tr>
+      <tr><td>8</td><td>Mi Smart Band 8 Active</td><td>Wearables</td><td>24,100</td><td>48,200,000.00</td></tr>
+      <tr><td>13</td><td>Amazon Fire TV Stick 4K</td><td>Electronics</td><td>22,400</td><td>89,600,000.00</td></tr>
+      <tr><td>12</td><td>Noise Pulse 2 Max Smartwatch</td><td>Wearables</td><td>21,500</td><td>32,250,000.00</td></tr>
+      <tr><td>4</td><td>Puma Men Stride Running Shoes</td><td>Footwear</td><td>19,800</td><td>39,600,000.00</td></tr>
+      <tr><td>14</td><td>Fastrack Limitless FS1 Smartwatch</td><td>Wearables</td><td>18,300</td><td>27,450,000.00</td></tr>
+      <tr><td>9</td><td>Prestige Iris 750W Mixer Grinder</td><td>Home Appliances</td><td>17,900</td><td>53,700,000.00</td></tr>
+      <tr><td>6</td><td>Samsung Galaxy S23 5G</td><td>Electronics</td><td>16,400</td><td>114,800,000.00</td></tr>
+      <tr><td>10</td><td>Levi's Men 511 Slim Jeans</td><td>Fashion</td><td>15,300</td><td>38,250,000.00</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Unique Payment Methods in Food Orders (DISTINCT)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT DISTINCT payment_method
+FROM orders;</code></pre>
+  <table>
+    <thead>
+      <tr><th>payment_method</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>UPI</td></tr>
+      <tr><td>Credit Card</td></tr>
+      <tr><td>Cash on Delivery</td></tr>
+      <tr><td>Debit Card</td></tr>
+      <tr><td>Net Banking</td></tr>
+      <tr><td>Digital Wallet</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 2: Registered User Cities Alphabetically Without Duplicates</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT DISTINCT city
+FROM users
+ORDER BY city ASC;</code></pre>
+  <table>
+    <thead>
+      <tr><th>city</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ahmedabad</td></tr>
+      <tr><td>Bengaluru</td></tr>
+      <tr><td>Chandigarh</td></tr>
+      <tr><td>Chennai</td></tr>
+      <tr><td>Delhi</td></tr>
+      <tr><td>Hyderabad</td></tr>
+      <tr><td>Jaipur</td></tr>
+      <tr><td>Kolkata</td></tr>
+      <tr><td>Mumbai</td></tr>
+      <tr><td>Pune</td></tr>
+      <tr><td>Surat</td></tr>
+      <tr><td>Varanasi</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: Top 5 Most Recent Movie Bookings</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT booking_id, user_id, movie_name, theater_name, tickets_count, booking_date
+FROM bookings
+ORDER BY booking_date DESC
+LIMIT 5;</code></pre>
+  <table>
+    <thead>
+      <tr><th>booking_id</th><th>user_id</th><th>movie_name</th><th>theater_name</th><th>tickets_count</th><th>booking_date</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>508</td><td>120</td><td>Bade Miyan Chote Miyan</td><td>PVR PALLADIUM</td><td>5</td><td>2024-04-01 19:30:00</td></tr>
+      <tr><td>507</td><td>103</td><td>Manjummel Boys</td><td>INOX Nexus</td><td>2</td><td>2024-03-31 15:10:00</td></tr>
+      <tr><td>506</td><td>115</td><td>Shaitaan</td><td>PVR Acropolis</td><td>3</td><td>2024-03-30 21:00:00</td></tr>
+      <tr><td>505</td><td>109</td><td>Godzilla x Kong</td><td>Miraj Cinemas</td><td>2</td><td>2024-03-29 16:20:00</td></tr>
+      <tr><td>504</td><td>102</td><td>Fighter</td><td>PVR Icon Gold</td><td>2</td><td>2024-03-28 20:45:00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: Top 10 Products by Highest Sold Count</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT name, sold_count
+FROM products
+ORDER BY sold_count DESC
+LIMIT 10;</code></pre>
+  <table>
+    <thead>
+      <tr><th>name</th><th>sold_count</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>boAt Airdopes 131</td><td>85,400</td></tr>
+      <tr><td>OnePlus Bullets Wireless Z2</td><td>81,200</td></tr>
+      <tr><td>Boult Audio Z40</td><td>77,800</td></tr>
+      <tr><td>realme C53</td><td>71,200</td></tr>
+      <tr><td>Poco M6 Pro 5G</td><td>68,400</td></tr>
+      <tr><td>Samsung Galaxy M14 5G</td><td>64,500</td></tr>
+      <tr><td>SanDisk 128GB Pen Drive</td><td>62,300</td></tr>
+      <tr><td>Mi Power Bank 3i 20000mAh</td><td>58,700</td></tr>
+      <tr><td>Fire-Boltt Ninja Call Pro</td><td>54,100</td></tr>
+      <tr><td>Noise ColorFit Icon Buzz</td><td>48,900</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

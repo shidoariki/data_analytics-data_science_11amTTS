@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 13: Window Functions (Part 1: OVER, PARTITION BY) - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 13: Window Functions (Part 1: OVER, PARTITION BY)</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 13</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts: Window Functions Architecture</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Clause Component</th>
+        <th>Syntax Anatomy</th>
+        <th>Analytical Behavior</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>OVER()</code></td>
+        <td><code>FUNCTION() OVER()</code></td>
+        <td>Defines a calculation window across rows without collapsing records into summary rows.</td>
+      </tr>
+      <tr>
+        <td><code>PARTITION BY</code></td>
+        <td><code>OVER(PARTITION BY category)</code></td>
+        <td>Subdivides the window into isolated cohorts (e.g. per department, per user, per movie).</td>
+      </tr>
+      <tr>
+        <td><strong>Comparative Math</strong></td>
+        <td><code>val - AVG(val) OVER(...)</code></td>
+        <td>Calculates benchmark differentials inline on the atomic row level.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Employee Salary vs. Department Average</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>SELECT 
+    id, name, department, salary,
+    ROUND(AVG(salary) OVER(PARTITION BY department), 2) AS dept_avg_salary,
+    ROUND(salary - AVG(salary) OVER(PARTITION BY department), 2) AS diff_from_dept_avg
+FROM employees
+ORDER BY department, salary DESC;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>id</th><th>name</th><th>department</th><th>salary</th><th>dept_avg_salary</th><th>diff_from_dept_avg</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>4</td><td>Sunita Rao</td><td>Analytics</td><td>88,000.00</td><td>80,000.00</td><td>+8,000.00</td></tr>
+      <tr><td>5</td><td>Vikram Malhotra</td><td>Analytics</td><td>72,000.00</td><td>80,000.00</td><td>-8,000.00</td></tr>
+      <tr><td>1</td><td>Rohan Sharma</td><td>Engineering</td><td>95,000.00</td><td>84,000.00</td><td>+11,000.00</td></tr>
+      <tr><td>3</td><td>Neha Patel</td><td>Engineering</td><td>82,000.00</td><td>84,000.00</td><td>-2,000.00</td></tr>
+      <tr><td>2</td><td>Amit Verma</td><td>Engineering</td><td>75,000.00</td><td>84,000.00</td><td>-9,000.00</td></tr>
+      <tr><td>6</td><td>Pooja Iyer</td><td>Human Resources</td><td>65,000.00</td><td>60,000.00</td><td>+5,000.00</td></tr>
+      <tr><td>7</td><td>Kavita Joshi</td><td>Human Resources</td><td>55,000.00</td><td>60,000.00</td><td>-5,000.00</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Order Amounts with Platform Grand Total (OVER())</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT order_id, user_id, app_name, order_amount,
+       SUM(order_amount) OVER() AS grand_total_amount
+FROM Orders
+ORDER BY order_id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>order_id</th><th>user_id</th><th>app_name</th><th>order_amount</th><th>grand_total_amount</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>101</td><td>1</td><td>Zomato</td><td>450.00</td><td>8,900.00</td></tr>
+      <tr><td>102</td><td>1</td><td>Flipkart</td><td>1,200.00</td><td>8,900.00</td></tr>
+      <tr><td>103</td><td>2</td><td>Swiggy</td><td>320.00</td><td>8,900.00</td></tr>
+      <tr><td>104</td><td>2</td><td>Zomato</td><td>650.00</td><td>8,900.00</td></tr>
+      <tr><td>105</td><td>3</td><td>Flipkart</td><td>2,800.00</td><td>8,900.00</td></tr>
+      <tr><td>106</td><td>1</td><td>Swiggy</td><td>290.00</td><td>8,900.00</td></tr>
+      <tr><td>107</td><td>3</td><td>Zomato</td><td>420.00</td><td>8,900.00</td></tr>
+      <tr><td>108</td><td>4</td><td>Flipkart</td><td>1,500.00</td><td>8,900.00</td></tr>
+      <tr><td>109</td><td>2</td><td>Swiggy</td><td>890.00</td><td>8,900.00</td></tr>
+      <tr><td>110</td><td>4</td><td>Zomato</td><td>380.00</td><td>8,900.00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 2: User Orders with Per-User Average (OVER(PARTITION BY user_id))</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT user_id, order_id, app_name, order_amount,
+       ROUND(AVG(order_amount) OVER(PARTITION BY user_id), 2) AS user_avg_order_amount
+FROM Orders
+ORDER BY user_id, order_id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>user_id</th><th>order_id</th><th>app_name</th><th>order_amount</th><th>user_avg_order_amount</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>101</td><td>Zomato</td><td>450.00</td><td>646.67</td></tr>
+      <tr><td>1</td><td>102</td><td>Flipkart</td><td>1,200.00</td><td>646.67</td></tr>
+      <tr><td>1</td><td>106</td><td>Swiggy</td><td>290.00</td><td>646.67</td></tr>
+      <tr><td>2</td><td>103</td><td>Swiggy</td><td>320.00</td><td>620.00</td></tr>
+      <tr><td>2</td><td>104</td><td>Zomato</td><td>650.00</td><td>620.00</td></tr>
+      <tr><td>2</td><td>109</td><td>Swiggy</td><td>890.00</td><td>620.00</td></tr>
+      <tr><td>3</td><td>105</td><td>Flipkart</td><td>2,800.00</td><td>1,610.00</td></tr>
+      <tr><td>3</td><td>107</td><td>Zomato</td><td>420.00</td><td>1,610.00</td></tr>
+      <tr><td>4</td><td>108</td><td>Flipkart</td><td>1,500.00</td><td>940.00</td></tr>
+      <tr><td>4</td><td>110</td><td>Zomato</td><td>380.00</td><td>940.00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: Song Duration and User Cumulative Total Duration</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT user_id, song_id, duration_sec,
+       SUM(duration_sec) OVER(PARTITION BY user_id) AS total_user_duration_sec
+FROM Playlist
+ORDER BY user_id, song_id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>user_id</th><th>song_id</th><th>duration_sec</th><th>total_user_duration_sec</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>101</td><td>1</td><td>240</td><td>730</td></tr>
+      <tr><td>101</td><td>2</td><td>180</td><td>730</td></tr>
+      <tr><td>101</td><td>3</td><td>310</td><td>730</td></tr>
+      <tr><td>102</td><td>4</td><td>210</td><td>405</td></tr>
+      <tr><td>102</td><td>5</td><td>195</td><td>405</td></tr>
+      <tr><td>103</td><td>6</td><td>360</td><td>1,055</td></tr>
+      <tr><td>103</td><td>7</td><td>290</td><td>1,055</td></tr>
+      <tr><td>103</td><td>8</td><td>220</td><td>1,055</td></tr>
+      <tr><td>103</td><td>9</td><td>185</td><td>1,055</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: Movie Ratings with Movie Average & Differential</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT rating_id, user_id, movie_name, rating,
+       ROUND(AVG(rating) OVER(PARTITION BY movie_name), 2) AS movie_avg_rating,
+       ROUND(rating - AVG(rating) OVER(PARTITION BY movie_name), 2) AS rating_diff_from_avg
+FROM MovieRatings
+ORDER BY movie_name, rating_id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>rating_id</th><th>user_id</th><th>movie_name</th><th>rating</th><th>movie_avg_rating</th><th>rating_diff_from_avg</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>9</td><td>11</td><td>12th Fail</td><td>5</td><td>4.67</td><td>+0.33</td></tr>
+      <tr><td>10</td><td>13</td><td>12th Fail</td><td>5</td><td>4.67</td><td>+0.33</td></tr>
+      <tr><td>11</td><td>14</td><td>12th Fail</td><td>4</td><td>4.67</td><td>-0.67</td></tr>
+      <tr><td>5</td><td>11</td><td>Animal</td><td>3</td><td>3.50</td><td>-0.50</td></tr>
+      <tr><td>6</td><td>12</td><td>Animal</td><td>5</td><td>3.50</td><td>+1.50</td></tr>
+      <tr><td>7</td><td>15</td><td>Animal</td><td>2</td><td>3.50</td><td>-1.50</td></tr>
+      <tr><td>8</td><td>16</td><td>Animal</td><td>4</td><td>3.50</td><td>+0.50</td></tr>
+      <tr><td>1</td><td>11</td><td>Dune: Part Two</td><td>5</td><td>4.50</td><td>+0.50</td></tr>
+      <tr><td>2</td><td>12</td><td>Dune: Part Two</td><td>4</td><td>4.50</td><td>-0.50</td></tr>
+      <tr><td>3</td><td>13</td><td>Dune: Part Two</td><td>5</td><td>4.50</td><td>+0.50</td></tr>
+      <tr><td>4</td><td>14</td><td>Dune: Part Two</td><td>4</td><td>4.50</td><td>-0.50</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

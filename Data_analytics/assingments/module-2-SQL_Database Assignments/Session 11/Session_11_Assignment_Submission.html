@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 11: Subqueries (Scalar, Row, Table) - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 11: Subqueries (Scalar, Row, Table)</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 11</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts: Subquery Architecture</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Subquery Type</th>
+        <th>Placement Location</th>
+        <th>Return Shape</th>
+        <th>Analytical Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Scalar Subquery</strong></td>
+        <td><code>SELECT</code> or <code>WHERE</code></td>
+        <td>1 Value (1x1)</td>
+        <td>Dynamic threshold filtering (e.g. <code>WHERE salary &gt; AVG</code>) and inline benchmark columns.</td>
+      </tr>
+      <tr>
+        <td><strong>Correlated Subquery</strong></td>
+        <td><code>SELECT</code> or <code>WHERE</code></td>
+        <td>1 Value per row</td>
+        <td>Row-dependent metric calculation (e.g. Category Average Price alongside each product).</td>
+      </tr>
+      <tr>
+        <td><strong>Derived Table</strong></td>
+        <td><code>FROM</code> clause</td>
+        <td>Multi-Row Table</td>
+        <td>Two-phase aggregation (e.g. pre-counting items per user before outer filtering).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Employees Earning Above Company Average Salary</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>SELECT id, name, department, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees)
+ORDER BY salary DESC;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>id</th><th>name</th><th>department</th><th>salary (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Rajesh Mehta</td><td>Executive</td><td>125,000.00</td></tr>
+      <tr><td>2</td><td>Sunita Rao</td><td>Engineering</td><td>92,000.00</td></tr>
+      <tr><td>3</td><td>Vikram Malhotra</td><td>Analytics</td><td>78,000.00</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Restaurants with Rating Higher Than Overall Average</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT name, rating
+FROM Restaurants
+WHERE rating > (SELECT AVG(rating) FROM Restaurants)
+ORDER BY rating DESC;</code></pre>
+  <table>
+    <thead><tr><th>name</th><th>rating</th></tr></thead>
+    <tbody>
+      <tr><td>Indian Accent</td><td>4.9</td></tr>
+      <tr><td>Toit Brewpub</td><td>4.8</td></tr>
+      <tr><td>Barbeque Nation</td><td>4.6</td></tr>
+      <tr><td>Mocha Cafe</td><td>4.5</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 2: Products with Category Average Price (Scalar in SELECT)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT p.name AS product_name, p.category, p.price,
+       ROUND((SELECT AVG(p2.price) FROM Products p2 WHERE p2.category = p.category), 2) AS category_avg_price
+FROM Products p
+ORDER BY p.category, p.price DESC;</code></pre>
+  <table>
+    <thead>
+      <tr><th>product_name</th><th>category</th><th>price (INR)</th><th>category_avg_price (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sony WH-1000XM5</td><td>Audio</td><td>29,990.00</td><td>13,829.33</td></tr>
+      <tr><td>OnePlus Buds Pro 2</td><td>Audio</td><td>9,999.00</td><td>13,829.33</td></tr>
+      <tr><td>boAt Rockerz 450</td><td>Audio</td><td>1,499.00</td><td>13,829.33</td></tr>
+      <tr><td>Nike Air Zoom Pegasus</td><td>Footwear</td><td>9,995.00</td><td>6,247.00</td></tr>
+      <tr><td>Puma Smash v2</td><td>Footwear</td><td>2,499.00</td><td>6,247.00</td></tr>
+      <tr><td>iPhone 15</td><td>Mobiles</td><td>79,900.00</td><td>55,632.67</td></tr>
+      <tr><td>Samsung Galaxy S23</td><td>Mobiles</td><td>74,999.00</td><td>55,632.67</td></tr>
+      <tr><td>Redmi 12 5G</td><td>Mobiles</td><td>11,999.00</td><td>55,632.67</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: Users with More Playlists Than Average (Subquery in FROM & WHERE)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT u.username, user_counts.playlist_count
+FROM Users u
+INNER JOIN (
+    SELECT user_id, COUNT(playlist_id) AS playlist_count
+    FROM Playlists
+    GROUP BY user_id
+) user_counts ON u.user_id = user_counts.user_id
+WHERE user_counts.playlist_count > (
+    SELECT AVG(sub.p_count)
+    FROM (SELECT COUNT(playlist_id) AS p_count FROM Playlists GROUP BY user_id) sub
+)
+ORDER BY user_counts.playlist_count DESC;</code></pre>
+  <table>
+    <thead><tr><th>username</th><th>playlist_count</th></tr></thead>
+    <tbody>
+      <tr><td>arjun_kapoor</td><td>4</td></tr>
+      <tr><td>sneha_nair</td><td>3</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: Users with Orders Greater Than Average Order Amount</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT DISTINCT user_id
+FROM Orders
+WHERE total_amount > (SELECT AVG(total_amount) FROM Orders)
+ORDER BY user_id;</code></pre>
+  <table>
+    <thead><tr><th>user_id</th></tr></thead>
+    <tbody>
+      <tr><td>102</td></tr>
+      <tr><td>103</td></tr>
+      <tr><td>104</td></tr>
+      <tr><td>106</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

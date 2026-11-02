@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 12: Common Table Expressions (CTEs) - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+    .ai-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--accent);
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 12: Common Table Expressions (CTEs)</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 12</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts: Common Table Expressions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>CTE Feature</th>
+        <th>Syntax Pattern</th>
+        <th>Analytical Advantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Non-Recursive CTE</strong></td>
+        <td><code>WITH CteName AS (SELECT ...) SELECT ...</code></td>
+        <td>Eliminates nested subqueries, enables sequential pipeline decomposition.</td>
+      </tr>
+      <tr>
+        <td><strong>Recursive CTE</strong></td>
+        <td><code>WITH RECURSIVE Cte(n) AS (Anchor UNION ALL Recursive)</code></td>
+        <td>Traverses tree structures and dynamically synthesizes date dimensions.</td>
+      </tr>
+      <tr>
+        <td><strong>Multiple CTEs</strong></td>
+        <td><code>WITH Cte1 AS (...), Cte2 AS (...) SELECT ...</code></td>
+        <td>Chains multiple intermediate data marts within a single query scope.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Year-over-Year (YoY) Sales Growth</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>WITH SalesCTE AS (
+    SELECT 
+        s1.sale_year,
+        s1.total_revenue,
+        s2.total_revenue AS prev_year_revenue
+    FROM annual_sales s1
+    LEFT JOIN annual_sales s2 ON s1.sale_year = s2.sale_year + 1
+)
+SELECT 
+    sale_year,
+    total_revenue,
+    prev_year_revenue,
+    ROUND(100.0 * (total_revenue - prev_year_revenue) / prev_year_revenue, 2) AS yoy_growth_pct
+FROM SalesCTE
+ORDER BY sale_year;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>sale_year</th><th>total_revenue (INR)</th><th>prev_year_revenue (INR)</th><th>YoY Growth (%)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2020</td><td>45,000,000.00</td><td><em>NULL</em></td><td><em>NULL</em></td></tr>
+      <tr><td>2021</td><td>58,000,000.00</td><td>45,000,000.00</td><td>+28.89%</td></tr>
+      <tr><td>2022</td><td>72,000,000.00</td><td>58,000,000.00</td><td>+24.14%</td></tr>
+      <tr><td>2023</td><td>95,000,000.00</td><td>72,000,000.00</td><td>+31.94%</td></tr>
+      <tr><td>2024</td><td>120,000,000.00</td><td>95,000,000.00</td><td>+26.32%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Top 3 Most-Followed Spotify Artists (WITH TopArtists)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>WITH TopArtists AS (
+    SELECT artist_id, name, followers
+    FROM SpotifyArtists
+    ORDER BY followers DESC
+    LIMIT 3
+)
+SELECT * FROM TopArtists;</code></pre>
+  <table>
+    <thead><tr><th>artist_id</th><th>name</th><th>followers</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Arijit Singh</td><td>115,000,000</td></tr>
+      <tr><td>3</td><td>Ed Sheeran</td><td>112,000,000</td></tr>
+      <tr><td>2</td><td>Taylor Swift</td><td>108,000,000</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 2: Highest Sales Month in 2023 (FlipkartOrders)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>WITH MonthlyTotals AS (
+    SELECT strftime('%m', order_date) AS order_month, SUM(total_amount) AS total_sales
+    FROM FlipkartOrders
+    WHERE strftime('%Y', order_date) = '2023'
+    GROUP BY strftime('%m', order_date)
+)
+SELECT order_month, total_sales
+FROM MonthlyTotals
+ORDER BY total_sales DESC
+LIMIT 1;</code></pre>
+  <table>
+    <thead><tr><th>order_month</th><th>total_sales (INR)</th></tr></thead>
+    <tbody>
+      <tr><td>10 (October)</td><td>402,000.00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: Recursive CTE Generating Next 7 Calendar Days</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>WITH RECURSIVE CalendarDays(day_date, day_num) AS (
+    SELECT CURRENT_DATE, 1
+    UNION ALL
+    SELECT DATE(day_date, '+1 day'), day_num + 1
+    FROM CalendarDays
+    WHERE day_num < 7
+)
+SELECT day_num, day_date FROM CalendarDays;</code></pre>
+  <table>
+    <thead><tr><th>day_num</th><th>day_date</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>2026-11-02</td></tr>
+      <tr><td>2</td><td>2026-11-03</td></tr>
+      <tr><td>3</td><td>2026-11-04</td></tr>
+      <tr><td>4</td><td>2026-11-05</td></tr>
+      <tr><td>5</td><td>2026-11-06</td></tr>
+      <tr><td>6</td><td>2026-11-07</td></tr>
+      <tr><td>7</td><td>2026-11-08</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: Restaurants in Cities with City Average Rating > 4.0</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>WITH CityAvgRatings AS (
+    SELECT city, ROUND(AVG(rating), 2) AS city_avg_rating
+    FROM ZomatoRestaurants
+    GROUP BY city
+    HAVING AVG(rating) > 4.0
+)
+SELECT r.id, r.name, r.city, r.rating, c.city_avg_rating
+FROM ZomatoRestaurants r
+INNER JOIN CityAvgRatings c ON r.city = c.city
+ORDER BY c.city_avg_rating DESC, r.rating DESC;</code></pre>
+  <table>
+    <thead><tr><th>id</th><th>name</th><th>city</th><th>rating</th><th>city_avg_rating</th></tr></thead>
+    <tbody>
+      <tr><td>6</td><td>Toit Brewpub</td><td>Bengaluru</td><td>4.8</td><td>4.63</td></tr>
+      <tr><td>7</td><td>Truffles</td><td>Bengaluru</td><td>4.6</td><td>4.63</td></tr>
+      <tr><td>8</td><td>MTR</td><td>Bengaluru</td><td>4.5</td><td>4.63</td></tr>
+      <tr><td>3</td><td>Agashiye</td><td>Ahmedabad</td><td>4.6</td><td>4.50</td></tr>
+      <tr><td>1</td><td>Mocha Cafe</td><td>Ahmedabad</td><td>4.5</td><td>4.50</td></tr>
+      <tr><td>2</td><td>Gordhan Thal</td><td>Ahmedabad</td><td>4.4</td><td>4.50</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 5: AI-Assisted Query: IPL 2023 Total Runs > 2000</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <div class="ai-box">
+    <strong>AI Architectural Insight:</strong> Decomposes temporal scoping (`match_year = 2023`) and aggregation into the CTE, isolating the presentation cutoff (`WHERE total_runs > 2000`) in the outer statement.
+  </div>
+  <pre><code>WITH TeamRuns2023 AS (
+    SELECT team, SUM(runs) AS total_runs
+    FROM IPLMatches
+    WHERE match_year = 2023
+    GROUP BY team
+)
+SELECT team, total_runs
+FROM TeamRuns2023
+WHERE total_runs > 2000
+ORDER BY total_runs DESC;</code></pre>
+  <table>
+    <thead><tr><th>team</th><th>total_runs</th></tr></thead>
+    <tbody>
+      <tr><td>CSK</td><td>2,203</td></tr>
+      <tr><td>GT</td><td>2,179</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

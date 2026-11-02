@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 8: JOINS: INNER, LEFT, RIGHT - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 8: JOINS: INNER, LEFT, RIGHT (Foundation Session)</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 8</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts: Relational Joins & Keys</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Join Type</th>
+        <th>Relational Logic</th>
+        <th>Treatment of Unmatched Rows</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>INNER JOIN</code></td>
+        <td>Intersection: Matches records existing in both tables.</td>
+        <td>Unmatched rows from either table are discarded.</td>
+      </tr>
+      <tr>
+        <td><code>LEFT JOIN</code></td>
+        <td>Preserves all rows from the Left table.</td>
+        <td>Left rows with no right match display <code>NULL</code> for right columns.</td>
+      </tr>
+      <tr>
+        <td><code>RIGHT JOIN</code></td>
+        <td>Preserves all rows from the Right table.</td>
+        <td>Right rows with no left match display <code>NULL</code> for left columns.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Join Orders + Customers &rarr; Customer Segment &rarr; Revenue</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>SELECT 
+    cs.segment_name,
+    COUNT(o.order_id) AS total_orders,
+    COALESCE(SUM(o.amount), 0.00) AS total_revenue
+FROM CustomerSegments cs
+LEFT JOIN Users u ON cs.segment_id = u.segment_id
+LEFT JOIN Orders o ON u.user_id = o.user_id
+GROUP BY cs.segment_id, cs.segment_name
+ORDER BY total_revenue DESC;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>segment_name</th><th>total_orders</th><th>total_revenue (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Premium Gold</td><td>3</td><td>610.00</td></tr>
+      <tr><td>Regular Diner</td><td>2</td><td>540.00</td></tr>
+      <tr><td>Occasional Saver</td><td>0</td><td>0.00</td></tr>
+      <tr><td>New Customer</td><td>0</td><td>0.00</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Table Creation & Population</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <p>Created <code>Users</code> (4 records) and <code>Orders</code> (6 records including orphaned order 106 with <code>user_id = 99</code>).</p>
+
+  <h3>Task 2: INNER JOIN (Only Users Who Placed Orders)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT u.username, o.product, o.amount
+FROM Users u
+INNER JOIN Orders o ON u.user_id = o.user_id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>username</th><th>product</th><th>amount (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>rohan_sharma</td><td>Margherita Pizza</td><td>350.00</td></tr>
+      <tr><td>rohan_sharma</td><td>Garlic Breadsticks</td><td>150.00</td></tr>
+      <tr><td>priya_mehta</td><td>Paneer Butter Masala</td><td>420.00</td></tr>
+      <tr><td>priya_mehta</td><td>Butter Naan (Pack of 3)</td><td>120.00</td></tr>
+      <tr><td>rohan_sharma</td><td>Choco Lava Cake</td><td>110.00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: LEFT JOIN (All Users, NULL for Non-Purchasers)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT u.username, u.city, o.product, o.amount
+FROM Users u
+LEFT JOIN Orders o ON u.user_id = o.user_id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>username</th><th>city</th><th>product</th><th>amount (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>rohan_sharma</td><td>Mumbai</td><td>Choco Lava Cake</td><td>110.00</td></tr>
+      <tr><td>rohan_sharma</td><td>Mumbai</td><td>Garlic Breadsticks</td><td>150.00</td></tr>
+      <tr><td>rohan_sharma</td><td>Mumbai</td><td>Margherita Pizza</td><td>350.00</td></tr>
+      <tr><td>priya_mehta</td><td>Bengaluru</td><td>Butter Naan (Pack of 3)</td><td>120.00</td></tr>
+      <tr><td>priya_mehta</td><td>Bengaluru</td><td>Paneer Butter Masala</td><td>420.00</td></tr>
+      <tr><td>karan_patel</td><td>Ahmedabad</td><td><em>NULL</em></td><td><em>NULL</em></td></tr>
+      <tr><td>sneha_rao</td><td>Pune</td><td><em>NULL</em></td><td><em>NULL</em></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: RIGHT JOIN (All Orders, NULL for Unmatched Users)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT o.order_id, o.product, o.amount, u.username
+FROM Users u
+RIGHT JOIN Orders o ON u.user_id = o.user_id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>order_id</th><th>product</th><th>amount (INR)</th><th>username</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>101</td><td>Margherita Pizza</td><td>350.00</td><td>rohan_sharma</td></tr>
+      <tr><td>102</td><td>Garlic Breadsticks</td><td>150.00</td><td>rohan_sharma</td></tr>
+      <tr><td>105</td><td>Choco Lava Cake</td><td>110.00</td><td>rohan_sharma</td></tr>
+      <tr><td>103</td><td>Paneer Butter Masala</td><td>420.00</td><td>priya_mehta</td></tr>
+      <tr><td>104</td><td>Butter Naan (Pack of 3)</td><td>120.00</td><td>priya_mehta</td></tr>
+      <tr><td>106</td><td>Chicken Biryani</td><td>380.00</td><td><em>NULL</em></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 5: Zomato Customer Segmentation Aggregation</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT 
+    u.username,
+    cs.segment_name,
+    COALESCE(SUM(o.amount), 0.00) AS total_order_amount
+FROM Users u
+LEFT JOIN CustomerSegments cs ON u.segment_id = cs.segment_id
+LEFT JOIN Orders o ON u.user_id = o.user_id
+GROUP BY u.user_id, u.username, cs.segment_name
+ORDER BY total_order_amount DESC;</code></pre>
+  <table>
+    <thead>
+      <tr><th>username</th><th>segment_name</th><th>total_order_amount (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>rohan_sharma</td><td>Premium Gold</td><td>610.00</td></tr>
+      <tr><td>priya_mehta</td><td>Regular Diner</td><td>540.00</td></tr>
+      <tr><td>karan_patel</td><td>Occasional Saver</td><td>0.00</td></tr>
+      <tr><td>sneha_rao</td><td>New Customer</td><td>0.00</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

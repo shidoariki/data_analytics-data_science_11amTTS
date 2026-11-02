@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 18 - Views</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f8fafc; margin: 0; padding: 40px 20px; }
+        .container { max-width: 960px; margin: auto; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-top: 0; }
+        h2 { color: #1e40af; margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+        h3 { color: #334155; margin-top: 20px; }
+        pre { background: #0f172a; color: #f8fafc; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 14px; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        .error-box { background: #fee2e2; border-left: 4px solid #ef4444; padding: 12px 16px; border-radius: 4px; margin: 15px 0; color: #991b1b; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="badge">Module 2: SQL & Relational Databases</span>
+    <h1>Session 18: SQL Views, Updatability Limitations & BI Architecture</h1>
+    <p><strong>Student:</strong> Rushikesh | <strong>Database Dialect:</strong> MySQL / SQLite Compatible</p>
+
+    <h2>1. View Updatability Limits</h2>
+    <div class="error-box">
+        <strong>Observed Error on Aggregate View UPDATE:</strong><br>
+        <code>ERROR 1288 (HY000): The target table TopRatedRestaurants of the UPDATE is not updatable</code>
+    </div>
+    <p>A view cannot accept <code>UPDATE</code>, <code>INSERT</code>, or <code>DELETE</code> operations when it includes aggregate functions (<code>AVG</code>, <code>SUM</code>, <code>COUNT</code>), <code>GROUP BY</code>, or multi-table joins where a single base-table target row cannot be unequivocally determined.</p>
+
+    <h2>2. Assignment Solutions</h2>
+
+    <h3>Demo: Daily Sales Reporting View</h3>
+    <pre><code>CREATE VIEW View_DailySalesDashboard AS
+SELECT sale_date,
+       COUNT(sale_id) AS total_transactions,
+       SUM(amount) AS total_revenue,
+       ROUND(AVG(amount), 2) AS avg_ticket_size
+FROM daily_sales
+GROUP BY sale_date;</code></pre>
+
+    <h3>Task 1 & 2: TopRatedRestaurants with City Join</h3>
+    <pre><code>CREATE OR REPLACE VIEW TopRatedRestaurants AS
+SELECT r.restaurant_name,
+       r.city,
+       ROUND(AVG(rv.rating), 2) AS avg_rating,
+       COUNT(rv.review_id) AS total_reviews
+FROM restaurants r
+INNER JOIN restaurant_reviews rv ON r.restaurant_id = rv.restaurant_id
+GROUP BY r.restaurant_id, r.restaurant_name, r.city
+HAVING AVG(rv.rating) > 4.0;</code></pre>
+
+    <h3>Task 4: DailyOrdersSummary View (Last 30 Days)</h3>
+    <pre><code>CREATE VIEW DailyOrdersSummary AS
+SELECT order_date,
+       COUNT(order_id) AS total_orders,
+       SUM(order_amount) AS total_revenue
+FROM swiggy_orders
+WHERE order_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+GROUP BY order_date;</code></pre>
+
+    <h3>Task 5: 3 Best Practices for Analytics Views (Flipkart Scenario)</h3>
+    <ol>
+        <li><strong>Pre-filter Scope:</strong> Filter <code>order_status = 'DELIVERED'</code> inside the view to avoid scanning cancelled/returned orders.</li>
+        <li><strong>Standardize Metrics:</strong> Pre-calculate <code>ROUND(SUM(sale_amount - discount), 2) AS net_gmv</code> to establish an organizational single source of truth.</li>
+        <li><strong>Index Base Tables:</strong> Index composite columns <code>(order_date, category_id)</code> on underlying tables for sub-second dashboard rendering.</li>
+    </ol>
+</div>
+</body>
+</html>

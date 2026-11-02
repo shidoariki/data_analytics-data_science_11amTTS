@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 7: GROUP BY & HAVING - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 7: GROUP BY & HAVING (Critical Analytics Topic)</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 7</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts: GROUP BY vs. HAVING vs. WHERE</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Clause</th>
+        <th>Pipeline Stage</th>
+        <th>Filter Target</th>
+        <th>Can Use Aggregates?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>WHERE</code></td>
+        <td>Pre-Aggregation (Row-Level)</td>
+        <td>Filters raw rows before grouping</td>
+        <td>❌ No (Throws syntax error)</td>
+      </tr>
+      <tr>
+        <td><code>GROUP BY</code></td>
+        <td>Grouping Stage</td>
+        <td>Partitions dataset by categorical columns</td>
+        <td>— (Forms the group boundaries)</td>
+      </tr>
+      <tr>
+        <td><code>HAVING</code></td>
+        <td>Post-Aggregation (Group-Level)</td>
+        <td>Filters aggregated metrics (e.g. <code>SUM &gt; 1M</code>)</td>
+        <td>✅ Yes (Specifically built for aggregates)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Total Revenue per Region (Revenue > 1M)</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>SELECT region, SUM(revenue) AS total_revenue
+FROM regional_sales
+GROUP BY region
+HAVING SUM(revenue) > 1000000
+ORDER BY total_revenue DESC;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>region</th><th>total_revenue (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>South</td><td>1,550,000.00</td></tr>
+      <tr><td>West</td><td>1,170,000.00</td></tr>
+      <tr><td>North</td><td>1,100,000.00</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: Total Orders Placed by Each User in 'food_orders'</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT user_id, COUNT(order_id) AS total_orders
+FROM food_orders
+GROUP BY user_id
+ORDER BY total_orders DESC;</code></pre>
+  <table>
+    <thead>
+      <tr><th>user_id</th><th>total_orders</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>4</td></tr>
+      <tr><td>2</td><td>3</td></tr>
+      <tr><td>3</td><td>2</td></tr>
+      <tr><td>4</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 2: Total Amount Spent by Each Payment Method</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT payment_method, SUM(amount) AS total_amount_spent
+FROM transactions
+GROUP BY payment_method
+ORDER BY total_amount_spent DESC;</code></pre>
+  <table>
+    <thead>
+      <tr><th>payment_method</th><th>total_amount_spent (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Credit Card</td><td>27,000.00</td></tr>
+      <tr><td>UPI</td><td>14,700.00</td></tr>
+      <tr><td>Debit Card</td><td>7,500.00</td></tr>
+      <tr><td>Net Banking</td><td>3,200.00</td></tr>
+      <tr><td>Cash on Delivery</td><td>1,300.00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: Genres with Total Box Office Collection Above 10 Crore</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT genre, SUM(box_office_collection) AS total_box_office_collection
+FROM movies
+GROUP BY genre
+HAVING SUM(box_office_collection) > 100000000
+ORDER BY total_box_office_collection DESC;</code></pre>
+  <table>
+    <thead>
+      <tr><th>genre</th><th>total_box_office_collection (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Action</td><td>3,100,000,000.00</td></tr>
+      <tr><td>Comedy-Drama</td><td>470,000,000.00</td></tr>
+      <tr><td>Comedy</td><td>268,000,000.00</td></tr>
+      <tr><td>Biographical</td><td>130,000,000.00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 4: Users with Combined Playlist Duration > 2 Hours (7200s)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT user_id, SUM(duration) AS total_duration_seconds
+FROM playlist
+GROUP BY user_id
+HAVING SUM(duration) > 7200
+ORDER BY total_duration_seconds DESC;</code></pre>
+  <table>
+    <thead>
+      <tr><th>user_id</th><th>total_duration_seconds</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>101</td><td>8,900</td></tr>
+      <tr><td>103</td><td>7,900</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

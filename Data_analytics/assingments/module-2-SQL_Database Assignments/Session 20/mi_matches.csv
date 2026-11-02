@@ -1,0 +1,7 @@
+match_id,season,city,date,team1,team2,toss_winner,toss_decision,winner,result_margin
+5,2023,Bengaluru,2023-04-02,Royal Challengers Bangalore,Mumbai Indians,Royal Challengers Bangalore,field,Royal Challengers Bangalore,8
+12,2023,Mumbai,2023-04-08,Mumbai Indians,Chennai Super Kings,Chennai Super Kings,field,Chennai Super Kings,7
+16,2023,Delhi,2023-04-11,Delhi Capitals,Mumbai Indians,Mumbai Indians,field,Mumbai Indians,6
+21,2023,Mumbai,2023-04-16,Mumbai Indians,Kolkata Knight Riders,Mumbai Indians,field,Mumbai Indians,5
+23,2023,Hyderabad,2023-04-18,Sunrisers Hyderabad,Mumbai Indians,Sunrisers Hyderabad,field,Mumbai Indians,14
+25,2023,Mumbai,2023-04-22,Mumbai Indians,Punjab Kings,Mumbai Indians,field,Punjab Kings,13

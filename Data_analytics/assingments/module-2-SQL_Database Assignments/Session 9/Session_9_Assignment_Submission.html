@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 9: Advanced Joins (FULL OUTER, SELF JOIN, CROSS JOIN) - Submission</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --accent: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
+    h2 { color: var(--primary); margin-top: 32px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #334155; margin-top: 24px; }
+    .meta-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+    .meta-box p { margin: 4px 0; font-size: 0.95rem; }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    code { font-family: Consolas, Monaco, "Courier New", monospace; }
+    p code, td code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a; font-size: 0.9em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: #f8fafc; font-weight: 600; color: #334155; }
+    tr:nth-child(even) { background: #fcfcfd; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+    .badge-success { background: #dcfce7; color: #15803d; }
+    .ai-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--accent);
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Session 9: Advanced Joins (FULL OUTER, SELF JOIN, CROSS JOIN)</h1>
+  
+  <div class="meta-box">
+    <p><strong>Course:</strong> Data Analytics — SQL & Relational Databases</p>
+    <p><strong>Student:</strong> Rushikesh</p>
+    <p><strong>Workspace:</strong> <code>D:\DA\Data_analytics\assingments\module-2-SQL_Database Assignments\Session 9</code></p>
+    <p><strong>Database Engine:</strong> MySQL / SQLite Compatible (<code>analytics_db</code>)</p>
+  </div>
+
+  <h2>1. Theoretical Concepts: Advanced Join Types</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Join Technique</th>
+        <th>Relational Mechanism</th>
+        <th>Industry Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>FULL OUTER JOIN</code></td>
+        <td>Retains all rows from left and right tables; unmatched values return <code>NULL</code>.</td>
+        <td>Marketing audits, partner reconciliation, merging CRM & Billing.</td>
+      </tr>
+      <tr>
+        <td><code>SELF JOIN</code></td>
+        <td>Joins a table to itself using dual aliasing (e.g. <code>e JOIN m</code>).</td>
+        <td>Employee-manager org trees, nested playlist hierarchies, customer co-residence.</td>
+      </tr>
+      <tr>
+        <td><code>CROSS JOIN</code></td>
+        <td>Cartesian product of all records ($M \times N$).</td>
+        <td>Recommendation candidate generation, matrix evaluations.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Demo: Self Join Employees Table &rarr; Manager Relationship</h2>
+  <span class="badge">Demo Query</span>
+  <pre><code>SELECT 
+    e.id AS employee_id,
+    e.name AS employee_name,
+    e.department,
+    COALESCE(m.name, 'Top Executive / No Manager') AS manager_name
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.id;</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>employee_id</th><th>employee_name</th><th>department</th><th>manager_name</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Rajesh Mehta</td><td>Executive</td><td><em>Top Executive / No Manager</em></td></tr>
+      <tr><td>2</td><td>Sunita Rao</td><td>Engineering</td><td>Rajesh Mehta</td></tr>
+      <tr><td>3</td><td>Vikram Malhotra</td><td>Analytics</td><td>Rajesh Mehta</td></tr>
+      <tr><td>4</td><td>Amit Verma</td><td>Engineering</td><td>Sunita Rao</td></tr>
+      <tr><td>5</td><td>Neha Patel</td><td>Engineering</td><td>Sunita Rao</td></tr>
+      <tr><td>6</td><td>Rohan Shah</td><td>Analytics</td><td>Vikram Malhotra</td></tr>
+      <tr><td>7</td><td>Pooja Iyer</td><td>Human Resources</td><td><em>Top Executive / No Manager</em></td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Assignment Tasks & Solutions</h2>
+
+  <h3>Task 1: FULL OUTER JOIN Between Influencers & Brands on City</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT i.influencer_name, b.brand_name, COALESCE(i.city, b.city) AS city
+FROM influencers i
+LEFT JOIN brands b ON i.city = b.city
+UNION
+SELECT i.influencer_name, b.brand_name, COALESCE(i.city, b.city) AS city
+FROM brands b
+LEFT JOIN influencers i ON b.city = i.city;</code></pre>
+  <table>
+    <thead>
+      <tr><th>influencer_name</th><th>brand_name</th><th>city</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><em>NULL</em></td><td>Mamaearth</td><td>Gurugram</td></tr>
+      <tr><td><em>NULL</em></td><td>Zomato</td><td>Gurugram</td></tr>
+      <tr><td>Bhuvan Bam</td><td>Boat Lifestyle</td><td>Delhi</td></tr>
+      <tr><td>Dolly Singh</td><td><em>NULL</em></td><td>Nainital</td></tr>
+      <tr><td>Kusha Kapila</td><td>Boat Lifestyle</td><td>Delhi</td></tr>
+      <tr><td>Ranveer Allahbadia</td><td>Nykaa Fashion</td><td>Mumbai</td></tr>
+      <tr><td>Tanmay Bhat</td><td>Swiggy</td><td>Bengaluru</td></tr>
+      <tr><td>Tanmay Bhat</td><td>Titan Watches</td><td>Bengaluru</td></tr>
+      <tr><td>Tech Burner</td><td>Boat Lifestyle</td><td>Delhi</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 2: SELF JOIN on Playlists (Nested Hierarchy)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT 
+    p.id AS playlist_id,
+    p.playlist_name,
+    COALESCE(parent.playlist_name, '[Top-Level Playlist]') AS parent_playlist_name
+FROM playlists p
+LEFT JOIN playlists parent ON p.parent_playlist_id = parent.id;</code></pre>
+  <table>
+    <thead>
+      <tr><th>playlist_id</th><th>playlist_name</th><th>parent_playlist_name</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Workout Motivation</td><td>[Top-Level Playlist]</td></tr>
+      <tr><td>2</td><td>High Energy Cardio</td><td>Workout Motivation</td></tr>
+      <tr><td>3</td><td>Gym EDM Bass Boost</td><td>Workout Motivation</td></tr>
+      <tr><td>4</td><td>Chill Vibes</td><td>[Top-Level Playlist]</td></tr>
+      <tr><td>5</td><td>Acoustic Sunday Afternoon</td><td>Chill Vibes</td></tr>
+      <tr><td>6</td><td>Lo-Fi Study Beats</td><td>Chill Vibes</td></tr>
+      <tr><td>7</td><td>Late Night Coding Lo-Fi</td><td>Lo-Fi Study Beats</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 3: CROSS JOIN Users & Offers (Flipkart Personalized Campaign)</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>SELECT u.user_name, o.offer_title, o.discount_pct
+FROM users u
+CROSS JOIN offers o
+ORDER BY u.user_name;</code></pre>
+  <p>Generates all 21 user-deal permutations to establish the candidate recommendation pool.</p>
+
+  <h3>Task 4: Employees Self Join & Top-Level Managers Filter</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <pre><code>-- Top-Level Managers (No Manager)
+SELECT e.id AS employee_id, e.name AS employee_name, e.department, 'Top-Level Manager' AS role_status
+FROM employees e
+WHERE e.manager_id IS NULL;</code></pre>
+  <table>
+    <thead>
+      <tr><th>employee_id</th><th>employee_name</th><th>department</th><th>role_status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Rajesh Mehta</td><td>Executive</td><td>Top-Level Manager</td></tr>
+      <tr><td>7</td><td>Pooja Iyer</td><td>Human Resources</td><td>Top-Level Manager</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Task 5: AI-Assisted Query: Pairs of Users Living in the Same City</h3>
+  <span class="badge badge-success">Completed & Verified</span>
+  <div class="ai-box">
+    <strong>AI Debugging Insight:</strong> Using <code>u1.user_id &lt; u2.user_id</code> instead of <code>!=</code> eliminates reciprocal duplicates (e.g. keeps <code>(Aarav, Kabir)</code> and removes <code>(Kabir, Aarav)</code>).
+  </div>
+  <pre><code>SELECT u1.user_name AS user_1, u2.user_name AS user_2, u1.city
+FROM users u1
+INNER JOIN users u2 ON u1.city = u2.city AND u1.user_id < u2.user_id
+ORDER BY u1.city, user_1;</code></pre>
+  <table>
+    <thead>
+      <tr><th>user_1</th><th>user_2</th><th>city</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ananya Desai</td><td>Devansh Joshi</td><td>Ahmedabad</td></tr>
+      <tr><td>Diya Patel</td><td>Ananya Desai</td><td>Ahmedabad</td></tr>
+      <tr><td>Diya Patel</td><td>Devansh Joshi</td><td>Ahmedabad</td></tr>
+      <tr><td>Aarav Sharma</td><td>Kabir Mehta</td><td>Mumbai</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

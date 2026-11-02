@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 17 - CASE WHEN (Conditional Logic)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f8fafc; margin: 0; padding: 40px 20px; }
+        .container { max-width: 960px; margin: auto; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-top: 0; }
+        h2 { color: #1e40af; margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+        h3 { color: #334155; margin-top: 20px; }
+        pre { background: #0f172a; color: #f8fafc; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 14px; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        th, td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; }
+        th { background: #f1f5f9; color: #0f172a; }
+        tr:nth-child(even) { background: #f8fafc; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="badge">Module 2: SQL & Relational Databases</span>
+    <h1>Session 17: CASE WHEN (Conditional Logic) & Value Binning</h1>
+    <p><strong>Student:</strong> Rushikesh | <strong>Database Dialect:</strong> ANSI SQL (MySQL & SQLite Compatible)</p>
+
+    <h2>1. Conditional Logic Architecture</h2>
+    <p>The SQL <code>CASE</code> expression evaluates a sequence of Boolean conditions sequentially and returns the corresponding value of the first matching condition. If no conditions match, the fallback in <code>ELSE</code> is executed.</p>
+
+    <h2>2. Assignment Solutions</h2>
+
+    <h3>Demo: Customer Value Segmentation</h3>
+    <pre><code>SELECT customer_id, customer_name, total_spend,
+       CASE 
+           WHEN total_spend >= 10000 THEN 'High Value'
+           WHEN total_spend >= 3000 THEN 'Medium Value'
+           ELSE 'Low Value'
+       END AS customer_tier
+FROM customers
+ORDER BY total_spend DESC;</code></pre>
+
+    <h3>Task 1: Food Order Size Categorization</h3>
+    <pre><code>SELECT order_id, customer_name, total_amount, order_date,
+       CASE 
+           WHEN total_amount &lt; 300 THEN 'Small'
+           WHEN total_amount BETWEEN 300 AND 999 THEN 'Medium'
+           ELSE 'Large'
+       END AS order_size_category
+FROM FoodOrders
+ORDER BY total_amount DESC;</code></pre>
+
+    <h3>Task 2: Movie Popularity Classification</h3>
+    <pre><code>SELECT movie_id, movie_title, genre, rating,
+       CASE 
+           WHEN rating >= 8.0 THEN 'Blockbuster'
+           WHEN rating >= 5.0 THEN 'Hit'
+           ELSE 'Average'
+       END AS popularity
+FROM Movies
+ORDER BY rating DESC;</code></pre>
+
+    <h3>Task 3: Flipkart Product Price Binning</h3>
+    <pre><code>SELECT product_id, product_name, category, price,
+       CASE 
+           WHEN price &lt; 500 THEN 'Budget'
+           WHEN price BETWEEN 500 AND 2000 THEN 'Standard'
+           ELSE 'Premium'
+       END AS price_category
+FROM FlipkartProducts
+ORDER BY price DESC;</code></pre>
+
+    <h3>Task 4: Spotify Track Duration Labeling</h3>
+    <pre><code>SELECT track_id, track_title, artist, duration_seconds,
+       CASE 
+           WHEN duration_seconds &lt; 180 THEN 'Short'
+           WHEN duration_seconds BETWEEN 180 AND 300 THEN 'Medium'
+           ELSE 'Long'
+       END AS duration_label
+FROM SpotifyTracks
+ORDER BY duration_seconds DESC;</code></pre>
+
+    <h2>3. Verified Output Summary</h2>
+    <pre><code>--- TASK 1: Food Orders Categorization ---
+(106, 'Sneha Joshi', 2100, 'Large')
+(104, 'Ananya Iyer', 1450, 'Large')
+(103, 'Rohan Patel', 850, 'Medium')
+(102, 'Priya Verma', 350, 'Medium')
+(101, 'Aarav Patel', 240, 'Small')
+(105, 'Kabir Mehta', 120, 'Small')
+
+--- TASK 2: Movie Popularity ---
+(201, 'The Dark Knight', 'Action', 9.0, 'Blockbuster')
+(202, 'Oppenheimer', 'Drama', 8.9, 'Blockbuster')
+(204, 'Fast X', 'Action', 5.8, 'Hit')
+(203, 'Brahmastra', 'Fantasy', 5.6, 'Hit')
+(205, 'Adipurush', 'Mythology', 3.8, 'Average')
+</code></pre>
+</div>
+</body>
+</html>

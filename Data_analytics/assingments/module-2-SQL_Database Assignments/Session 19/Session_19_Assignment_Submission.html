@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 19 - Indexing & Query Optimization</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f8fafc; margin: 0; padding: 40px 20px; }
+        .container { max-width: 960px; margin: auto; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-top: 0; }
+        h2 { color: #1e40af; margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+        h3 { color: #334155; margin-top: 20px; }
+        pre { background: #0f172a; color: #f8fafc; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 14px; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        th, td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; }
+        th { background: #f1f5f9; color: #0f172a; }
+        tr:nth-child(even) { background: #f8fafc; }
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .stat-card { background: #f1f5f9; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #e2e8f0; }
+        .stat-value { font-size: 28px; font-weight: 700; color: #1e40af; margin-top: 5px; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="badge">Module 2: SQL & Relational Databases</span>
+    <h1>Session 19: Indexing, EXPLAIN PLAN & Query Performance</h1>
+    <p><strong>Student:</strong> Rushikesh | <strong>Dataset Size:</strong> 15,000 Order Records</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div>Scan Time (No Index)</div>
+            <div class="stat-value">0.4527 ms</div>
+        </div>
+        <div class="stat-card">
+            <div>Seek Time (B-Tree Index)</div>
+            <div class="stat-value">0.0620 ms</div>
+        </div>
+        <div class="stat-card">
+            <div>Measured Speedup</div>
+            <div class="stat-value">7.30x</div>
+        </div>
+    </div>
+
+    <h2>1. EXPLAIN QUERY PLAN Comparative Analysis</h2>
+    <table>
+        <tr>
+            <th>State</th>
+            <th>Execution Plan Output</th>
+            <th>Algorithmic Complexity</th>
+            <th>Storage Mechanism</th>
+        </tr>
+        <tr>
+            <td><strong>Before Index</strong></td>
+            <td><code>SCAN orders</code></td>
+            <td>Linear <i>O(N)</i></td>
+            <td>Full sequential disk read across all blocks</td>
+        </tr>
+        <tr>
+            <td><strong>After Index</strong></td>
+            <td><code>SEARCH orders USING INDEX idx_orders_user_id (user_id=?)</code></td>
+            <td>Logarithmic <i>O(log N)</i></td>
+            <td>Direct B-Tree index traversal to matched pointers</td>
+        </tr>
+        <tr>
+            <td><strong>Covering Index</strong></td>
+            <td><code>SEARCH orders USING COVERING INDEX idx_orders_covering (user_id=?)</code></td>
+            <td>Index-Only <i>O(log N)</i></td>
+            <td>Bypasses base table completely (zero table bookmark lookups)</td>
+        </tr>
+    </table>
+
+    <h2>2. Assignment Solutions</h2>
+
+    <h3>Task 1 & 2: DDL Index Creation and Query</h3>
+    <pre><code>-- Create Index:
+CREATE INDEX idx_orders_user_id ON orders(user_id);
+
+-- Executing Query:
+SELECT order_id, user_id, order_date, total_amount, order_status
+FROM orders
+WHERE user_id = 250;</code></pre>
+
+    <h3>Task 4: Avoiding Full Table Scan on Category</h3>
+    <pre><code>CREATE INDEX idx_products_category ON products(category);
+
+SELECT product_id, product_name, category, price, stock_quantity
+FROM products
+WHERE category = 'Electronics';</code></pre>
+
+    <h3>Task 5: Advanced Optimizations Beyond Basic Indexing</h3>
+    <ul>
+        <li><strong>Covering Index:</strong> Include all projected columns in the index to enable index-only scans.</li>
+        <li><strong>Range Partitioning:</strong> Partition historical tables horizontally by year or month to leverage partition pruning.</li>
+        <li><strong>Keyset Pagination:</strong> Use cursor-based conditions (<code>WHERE id &lt; :last_id</code>) rather than expensive <code>OFFSET</code> pagination.</li>
+    </ul>
+</div>
+</body>
+</html>
