@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 21 - SQL + Excel Integration (Advanced)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f8fafc; margin: 0; padding: 40px 20px; }
+        .container { max-width: 960px; margin: auto; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-top: 0; }
+        h2 { color: #1e40af; margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+        h3 { color: #334155; margin-top: 20px; }
+        pre { background: #0f172a; color: #f8fafc; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 14px; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        th, td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; }
+        th { background: #f1f5f9; color: #0f172a; }
+        tr:nth-child(even) { background: #f8fafc; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="badge">Module 2: SQL & Relational Databases</span>
+    <h1>Session 21: Advanced SQL & Excel Integration (Power Query & Dynamic Dashboards)</h1>
+    <p><strong>Student:</strong> Rushikesh | <strong>Toolstack:</strong> SQL Server / SQLite, Excel Power Query, M-Code</p>
+
+    <h2>1. Integration Architecture</h2>
+    <p>Using Power Query's M-Engine, Excel reads parameters directly from defined worksheet cells, issues SQL pushdown statements directly to the database server, and populates live, interactive dashboard charts.</p>
+
+    <h2>2. Assignment Solutions & M-Scripts</h2>
+
+    <h3>Task 2: Cell-Bound Parameterized Power Query (M-Code)</h3>
+    <pre><code>let
+    // 1. Fetch value from Excel named cell 'SelectedCuisine'
+    CuisineParam = Excel.CurrentWorkbook(){[Name="SelectedCuisine"]}[Content]{0}[Column1],
+
+    // 2. Execute SQL query with parameter pushdown
+    Source = Sql.Database("localhost", "analytics_db", [
+        Query = "SELECT name, cuisine, rating, cost_for_two, city FROM Restaurants WHERE cuisine = '" & Text.Replace(CuisineParam, "'", "''") & "' ORDER BY rating DESC"
+    ])
+in
+    Source</code></pre>
+
+    <h3>Task 3: Dynamic Data Refresh Configuration</h3>
+    <ul>
+        <li><strong>Automatic Background Refresh:</strong> Configured in Connection Properties under <em>Usage</em>.</li>
+        <li><strong>Open File Refresh:</strong> Automatically syncs latest SQL state upon opening the workbook.</li>
+        <li><strong>One-Click Sync:</strong> <code>Ctrl + Alt + F5</code> ("Refresh All") executes immediate re-query.</li>
+    </ul>
+
+    <h3>Task 4: High Rated Restaurants (> 4.0) SQL</h3>
+    <pre><code>SELECT name, cuisine, rating, cost_for_two, city
+FROM Restaurants
+WHERE rating > 4.0
+ORDER BY rating DESC;</code></pre>
+
+    <h3>Task 5: Range-Bound Parameterized M-Code</h3>
+    <pre><code>let
+    MinR = Text.From(Excel.CurrentWorkbook(){[Name="MinRating"]}[Content]{0}[Column1]),
+    MaxR = Text.From(Excel.CurrentWorkbook(){[Name="MaxRating"]}[Content]{0}[Column1]),
+    Source = Sql.Database("localhost", "analytics_db", [
+        Query = "SELECT name, cuisine, rating, cost_for_two, city FROM Restaurants WHERE rating BETWEEN " & MinR & " AND " & MaxR & " ORDER BY rating DESC"
+    ])
+in
+    Source</code></pre>
+</div>
+</body>
+</html>

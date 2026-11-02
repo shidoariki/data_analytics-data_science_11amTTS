@@ -1,0 +1,65 @@
+// =============================================================================
+// Session 21: Power Query M-Code Scripts for Excel Advanced SQL Integration
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// SCRIPT 1: Reading Parameter Directly from Excel Named Cell
+// Cell B2 named "SelectedCuisine" in Excel worksheet
+// -----------------------------------------------------------------------------
+let
+    // 1. Fetch parameter value from Excel named cell "SelectedCuisine"
+    CuisineParameter = Excel.CurrentWorkbook(){[Name="SelectedCuisine"]}[Content]{0}[Column1],
+
+    // 2. Connect to SQL Database with Parameter Injection
+    Source = Sql.Database("localhost", "analytics_db", [
+        Query = "SELECT name, cuisine, rating, cost_for_two, city FROM Restaurants WHERE cuisine = '" & Text.Replace(CuisineParameter, "'", "''") & "' ORDER BY rating DESC"
+    ]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{
+        {"name", type text}, 
+        {"cuisine", type text}, 
+        {"rating", type number}, 
+        {"cost_for_two", Int64.Type}, 
+        {"city", type text}
+    })
+in
+    #"Changed Type"
+
+
+// -----------------------------------------------------------------------------
+// SCRIPT 2: Task 4 - High Rated Restaurants (> 4.0) with Bar Chart Dashboard
+// -----------------------------------------------------------------------------
+let
+    Source = Sql.Database("localhost", "analytics_db", [
+        Query = "SELECT name, cuisine, rating, cost_for_two, city FROM Restaurants WHERE rating > 4.0 ORDER BY rating DESC"
+    ]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{
+        {"name", type text}, 
+        {"cuisine", type text}, 
+        {"rating", type number}, 
+        {"cost_for_two", Int64.Type}, 
+        {"city", type text}
+    })
+in
+    #"Changed Type"
+
+
+// -----------------------------------------------------------------------------
+// SCRIPT 3: Task 5 - Dual-Parameter Range Query (Rating Between Min & Max)
+// Reading "MinRating" from Cell B4 and "MaxRating" from Cell B5
+// -----------------------------------------------------------------------------
+let
+    MinRating = Text.From(Excel.CurrentWorkbook(){[Name="MinRating"]}[Content]{0}[Column1]),
+    MaxRating = Text.From(Excel.CurrentWorkbook(){[Name="MaxRating"]}[Content]{0}[Column1]),
+    
+    Source = Sql.Database("localhost", "analytics_db", [
+        Query = "SELECT name, cuisine, rating, cost_for_two, city FROM Restaurants WHERE rating BETWEEN " & MinRating & " AND " & MaxRating & " ORDER BY rating DESC"
+    ]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{
+        {"name", type text}, 
+        {"cuisine", type text}, 
+        {"rating", type number}, 
+        {"cost_for_two", Int64.Type}, 
+        {"city", type text}
+    })
+in
+    #"Changed Type"
